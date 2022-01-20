@@ -1,14 +1,16 @@
-# HOOKSY - a micro-lib with collection of useful React hooks
+# HOOKSY
+
+### a micro-lib with collection of useful React hooks
 
 Developed by Marcin Górecki | DNA Technology, Poland
 
 ## Available hooks:
 
-### useOnMount
+### `useOnMount`
 
-### useOnUnmount
+### `useOnUnmount`
 
-### useGetDimensions
+### `useGetDimensions`
 
 # Getting Started with Create React App
 
