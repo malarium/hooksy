@@ -107,7 +107,7 @@ const arraysDifference: number[] = useDifference(array1, array2); // returns [8,
 
 - Returns X and Y of current cursor position on every move.
 
-## ATTENTION! It causes rerender on every mosemove, so usage should be limited. For getting X and Y of CLICK/TAP event - see next hook.
+_ATTENTION! It causes rerender on every mosemove, so usage should be limited. For getting X and Y of CLICK/TAP event - see the useCursorStaticPosition hook._
 
 EXAMPLE:
 
