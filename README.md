@@ -8,7 +8,7 @@ Developed by Marcin Górecki | DNA Technology, Poland
 
 ### `useOnMount`
 
-Accepts a callback function that is fired when a component is mounted.
+- Accepts a callback function that is fired when a component is mounted.
 
 EXAMPLE:
 
@@ -21,7 +21,57 @@ useOnMount(() => {
 
 ### `useOnUnmount`
 
+- Accepts a callback function that is fired when a component is unmounted.
+
+EXAMPLE:
+
+```
+useOnUnmount(() => {
+    console.log("component has been destroyed");
+    // other code
+  });
+```
+
 ### `useGetDimensions`
+
+- Accepts a ref (React.MutableRefObject) and returns a set of values in pixels:
+
+  ```
+  x: number; // horizontal position
+  y: number; // vertical position
+  width: number; // element's width
+  height: number; // element's height
+
+  //And element's shift from screen borders:
+
+  top: number;
+  right: number;
+  left: number;
+  bottom: number;
+  ```
+
+```
+
+EXAMPLE:
+
+```
+
+function useGetButtonDimensions() {
+const { width, height, left, top } = useGetDimensions(button);
+console.log(
+`width: ${width}px, height: ${height}px, left: ${left}px, top: ${top}px `
+);
+}
+
+return (
+<div className="App">
+<button ref={button} onClick={useGetButtonDimensions}>
+Check this button dimensions
+</button>
+</div>
+);
+
+```
 
 ### `useSortAlphabetically`
 
@@ -71,3 +121,4 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+```
