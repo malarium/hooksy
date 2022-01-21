@@ -27,7 +27,6 @@ EXAMPLE:
 
 ```
 useOnUnmount(() => {
-    console.log("component has been destroyed");
     // your code - cleanup
   });
 ```
@@ -102,6 +101,42 @@ EXAMPLE:
 const array1: number[] = [1, 2, 3, 4, 5, 6, 7];
 const array2: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 const arraysDifference: number[] = useDifference(array1, array2); // returns [8, 9, 0]
+```
+
+### useCursorPosition
+
+- Returns X and Y of current cursor position on every move.
+
+# ATTENTION! It causes rerender on every mosemove, so usage should be limited. For getting X and Y of CLICK/TAP event - see next hook.
+
+EXAMPLE:
+
+```
+const { x, y } = useCursorPosition();
+...
+
+return (
+    <div className="App">
+      <p>{`Mouse position: X: ${x}, Y: ${y}`}</p>
+    </div>
+  );
+```
+
+### useCursorStaticPosition
+
+- Returns X and Y of current cursor position on every TAP/CLICK event.
+
+EXAMPLE:
+
+```
+const { x, y } = useCursorStaticPosition();
+...
+
+return (
+    <div className="App">
+      <p>{`You clicked at X: ${x}, Y: ${y}`}</p>
+    </div>
+  );
 ```
 
 # Getting Started with Create React App
