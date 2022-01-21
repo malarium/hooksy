@@ -35,7 +35,7 @@ function App() {
   });
   useOnUnmount(() => logInConsole("unmounted"));
 
-  function useGetDimensionsTest() {
+  function useGetButtonDimensions() {
     const { width, height, left, top } = useGetDimensions(button);
     logInConsole(
       `width:  ${width}px, height: ${height}px, left: ${left}px, top: ${top}px `
@@ -45,7 +45,7 @@ function App() {
   return (
     <div className="App">
       <p>TEST</p>
-      <button ref={button} onClick={useGetDimensionsTest}>
+      <button ref={button} onClick={useGetButtonDimensions}>
         CLICK
       </button>
     </div>

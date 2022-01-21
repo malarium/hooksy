@@ -72,6 +72,38 @@ return (
 
 ### `useSortAlphabetically`
 
+- Accepts an array of strings and returns a new array of these strings sorted A-Z.
+
+EXAMPLE:
+
+```
+const sampleArrayOfStrings: string[] = [
+    "these",
+    "strings",
+    "should",
+    "be",
+    "sorted",
+    "alphabetically",
+    "Yoda",
+    "style",
+  ];
+
+  const sampleArrayOfStringsSorted =
+    useSortAplhabetically(sampleArrayOfStrings);
+```
+
+### useDifference
+
+- Accepts two arrays and returns a new array with symmetric difference (items that are only in one of the original arrays)
+
+EXAMPLE:
+
+```
+const array1: number[] = [1, 2, 3, 4, 5, 6, 7];
+const array2: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+const arraysDifference: number[] = useDifference(array1, array2); // returns [8, 9, 0]
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
