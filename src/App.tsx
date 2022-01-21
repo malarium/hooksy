@@ -1,4 +1,5 @@
 import React, { MutableRefObject } from "react";
+import useDifference from "./lib/useDifference";
 import useGetDimensions from "./lib/useGetDimensions";
 import useOnMount from "./lib/useOnMount";
 import useOnUnmount from "./lib/useOnUnmount";
@@ -20,6 +21,9 @@ function App() {
     "Yoda",
     "style",
   ];
+  const array1: number[] = [1, 2, 3, 4, 5, 6, 7];
+  const array2: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+  const arraysDifference: number[] = useDifference(array1, array2);
 
   const sampleArrayOfStringsSorted =
     useSortAplhabetically(sampleArrayOfStrings);
@@ -27,6 +31,7 @@ function App() {
   useOnMount(() => {
     logInConsole("rendered");
     logInConsole(sampleArrayOfStringsSorted);
+    logInConsole(arraysDifference);
   });
   useOnUnmount(() => logInConsole("unmounted"));
 

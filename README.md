@@ -8,9 +8,22 @@ Developed by Marcin Górecki | DNA Technology, Poland
 
 ### `useOnMount`
 
+Accepts a callback function that is fired when a component is mounted.
+
+EXAMPLE:
+
+```
+useOnMount(() => {
+    console.log("component has rendered");
+    // other code
+  });
+```
+
 ### `useOnUnmount`
 
 ### `useGetDimensions`
+
+### `useSortAlphabetically`
 
 # Getting Started with Create React App
 
