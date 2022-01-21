@@ -50,23 +50,22 @@ useOnUnmount(() => {
   bottom: number;
   ```
 
-```
-
 EXAMPLE:
 
 ```
-
 function useGetButtonDimensions() {
-const { width, height, left, top } = useGetDimensions(button);
-// use above values in your code f.ex: console.log(width + "px")
+    const { width, height, left, top } = useGetDimensions(button);
+    console.log(
+        `width: ${width}px, height: ${height}px, left: ${left}px, top: ${top}px `
+    );
 }
 
 return (
-<div className="App">
-<button ref={button} onClick={useGetButtonDimensions}>
-Check this button dimensions
-</button>
-</div>
+    <div className="App">
+        <button ref={button} onClick={useGetButtonDimensions}>
+            Check this button dimensions
+        </button>
+    </div>
 );
 
 ```
@@ -119,4 +118,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+```
+
 ```
