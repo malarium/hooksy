@@ -15,20 +15,20 @@ EXAMPLE:
 ```
 useOnMount(() => {
     console.log("component has rendered");
-    // other code
+    // your code
   });
 ```
 
 ### `useOnUnmount`
 
-- Accepts a callback function that is fired when a component is unmounted.
+- Accepts a callback function that is fired when a component is unmounted. Useful for cleanup methods.
 
 EXAMPLE:
 
 ```
 useOnUnmount(() => {
     console.log("component has been destroyed");
-    // other code
+    // your code - cleanup
   });
 ```
 
@@ -89,7 +89,7 @@ const sampleArrayOfStrings: string[] = [
   ];
 
   const sampleArrayOfStringsSorted =
-    useSortAplhabetically(sampleArrayOfStrings);
+    useSortAplhabetically(sampleArrayOfStrings); // returns ['alphabetically', 'be', 'should', 'sorted', 'strings', 'style', 'these', 'Yoda']
 ```
 
 ### useDifference
