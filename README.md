@@ -20,6 +20,8 @@ Developed by Marcin Górecki | DNA Technology, Poland
 
 #### [useCursorStaticPosition](#useCursorStaticPosition-1)
 
+# DOCS:
+
 ### `useOnMount`
 
 - Accepts a callback function that is fired when a component is mounted.
