@@ -6,6 +6,14 @@ Developed by Marcin Górecki | DNA Technology, Poland
 
 ## Available hooks:
 
+[useOnMount](#useOnMount)
+[useOnUnmount](#useOnUnmount)
+[useGetDimensions](#useGetDimensions)
+[useSortAlphabetically](#useSortAlphabetically)
+[useDifference](#useDifference)
+[useCursorPosition](#useCursorPosition)
+[useCursorStaticPosition](#useCursorStaticPosition)
+
 ### `useOnMount`
 
 - Accepts a callback function that is fired when a component is mounted.
@@ -140,9 +148,7 @@ return (
   );
 ```
 
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
