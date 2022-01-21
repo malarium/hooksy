@@ -35,7 +35,7 @@ useOnUnmount(() => {
 
 - Accepts a ref (React.MutableRefObject) and returns a set of values in pixels:
 
-  x: number; // horizontal position
+  x: number; // horizontal position|
   y: number; // vertical position
   width: number; // element's width
   height: number; // element's height
