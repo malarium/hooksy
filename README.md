@@ -6,19 +6,19 @@ Developed by Marcin Górecki | DNA Technology, Poland
 
 ## Available hooks:
 
-### [useOnMount](#useOnMount-1)
+## [useOnMount](#useOnMount-1)
 
-### [useOnUnmount](#useOnUnmount-1)
+## [useOnUnmount](#useOnUnmount-1)
 
-### [useGetDimensions](#useGetDimensions-1)
+## [useGetDimensions](#useGetDimensions-1)
 
-### [useSortAlphabetically](#useSortAlphabetically-1)
+## [useSortAlphabetically](#useSortAlphabetically-1)
 
-### [useDifference](#useDifference-1)
+## [useDifference](#useDifference-1)
 
-### [useCursorPosition](#useCursorPosition-1)
+## [useCursorPosition](#useCursorPosition-1)
 
-### [useCursorStaticPosition](#useCursorStaticPosition-1)
+## [useCursorStaticPosition](#useCursorStaticPosition-1)
 
 ### `useOnMount`
 
