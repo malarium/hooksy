@@ -58,9 +58,7 @@ EXAMPLE:
 
 function useGetButtonDimensions() {
 const { width, height, left, top } = useGetDimensions(button);
-console.log(
-`width: ${width}px, height: ${height}px, left: ${left}px, top: ${top}px `
-);
+// use above values in your code f.ex: console.log(width + "px")
 }
 
 return (
