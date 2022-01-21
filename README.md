@@ -2,7 +2,7 @@
 
 ### a micro-lib with collection of useful React hooks
 
-Developed by Marcin Górecki | DNA Technology, Poland
+_Developed by Marcin Górecki | DNA Technology, Poland_
 
 ## Available hooks:
 
