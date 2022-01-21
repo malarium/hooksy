@@ -1,4 +1,4 @@
-# HOOKSY
+# `HOOKSY`
 
 ### a micro-lib with collection of useful React hooks
 
@@ -107,7 +107,7 @@ const sampleArrayOfStrings: string[] = [
     useSortAplhabetically(sampleArrayOfStrings); // returns ['alphabetically', 'be', 'should', 'sorted', 'strings', 'style', 'these', 'Yoda']
 ```
 
-## useDifference
+## `useDifference`
 
 - Accepts two arrays and returns a new array with symmetric difference (items that are only in one of the original arrays)
 
@@ -119,7 +119,7 @@ const array2: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 const arraysDifference: number[] = useDifference(array1, array2); // returns [8, 9, 0]
 ```
 
-## useCursorPosition
+## `useCursorPosition`
 
 - Returns X and Y of current cursor position on every move.
 
@@ -139,7 +139,7 @@ return (
   );
 ```
 
-## useCursorStaticPosition
+## `useCursorStaticPosition`
 
 - Returns X and Y of current cursor position on every TAP/CLICK event.
 
