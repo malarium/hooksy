@@ -20,6 +20,8 @@ _Developed by Marcin Górecki | DNA Technology, Poland_
 
 #### [useCursorStaticPosition](#useCursorStaticPosition-1)
 
+#### [useAnimation](#useAnimation-1)
+
 # DOCS
 
 ### `useOnMount`
