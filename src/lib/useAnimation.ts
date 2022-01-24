@@ -1,13 +1,8 @@
 import React from "react";
+import { Imove } from "./helpers/interfaces";
 // TODO: Add 'combine' method that would chain animations with the same action (transform) - is that needed?
 // TODO: these can't be arrays - create interface and accept objects
-interface Imove {
-  element: React.MutableRefObject<any>;
-  x: number;
-  y: number;
-  timing?: number;
-  fill?: string;
-}
+
 const useAnimation = () => {
   const move = (moveData: Imove) => {
     const animation = [
@@ -16,8 +11,9 @@ const useAnimation = () => {
       },
     ];
     const animationTiming = {
-      duration: moveData.timing || 500,
-      fill: moveData.fill || `forwards`,
+      duration: moveData.duration || 500,
+      fill: moveData.fill || `none`,
+      easing: moveData.easing || `linear`,
     };
     return moveData.element.current.animate(animation, animationTiming);
   };

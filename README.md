@@ -179,7 +179,7 @@ const { move } = useAnimation();
             element: divToAnimate,
             x: 20,
             y: 20,
-            timing: 1500,
+            duration: 1500,
             fill: `both`,
           });
         }
@@ -193,10 +193,11 @@ ACCEPTED OPTIONS:
 ```
 {
   element: ref pointing to element
-  x: number
-  y: number
-  timing (optional, fallback to 500ms): number
-  fill (optional, fallback to 'forwards'): string
+  x: number // in percent
+  y: number // in percent
+  duration (optional, fallback to 500ms): number
+  fill (optional, fallback to 'none'): string // 'none', 'forwards', 'backwards' and 'both' available
+  easing (optional, fallback to 'linear'): string // | "linear", "ease-in", "ease-out", "ease-in-out", "linear", "step-start" and "step-end" available
 }
 ```
 

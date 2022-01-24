@@ -68,8 +68,9 @@ function App() {
             element: divToAnimate,
             x: 20,
             y: 20,
-            timing: 1500,
-            fill: `both`,
+            duration: 1500,
+            fill: "forwards",
+            easing: `ease-out`,
           });
         }}
       >
