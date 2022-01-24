@@ -164,7 +164,7 @@ return (
 
 AVAILABLE METHODS:
 
-### **move**
+## **move**
 
 Animates the element on X/Y axis. Values for X and Y represent percents NOT PIXELS!
 
