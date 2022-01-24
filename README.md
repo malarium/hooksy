@@ -4,7 +4,7 @@
 
 _Developed by Marcin Górecki | DNA Technology, Poland_
 
-## Available hooks:
+## Available hooks
 
 #### [useOnMount](#useOnMount-1)
 
@@ -20,7 +20,7 @@ _Developed by Marcin Górecki | DNA Technology, Poland_
 
 #### [useCursorStaticPosition](#useCursorStaticPosition-1)
 
-# DOCS:
+# DOCS
 
 ### `useOnMount`
 
@@ -156,6 +156,42 @@ return (
   );
 ```
 
+## `useAnimation`
+
+- This hook returns a whole bunch of methods making animations a breeze. It utilizes [WEB Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API).
+
+AVAILABLE METHODS:
+
+#### move
+
+EXAMPLE:
+
+```
+const { move } = useAnimation();
+<div ref={divToAnimate}>This div will be moved</div>
+      <button
+        onClick={() =>
+          move({
+            element: divToAnimate,
+            x: 20,
+            y: 20,
+            timing: 1500,
+            fill: `both`,
+          });
+        }
+      >
+        Move!
+      </button>
+```
+
+ACCEPTED OPTIONS:
+
+element: ref pointing to element
+x: number
+y: number
+timing (optional, fallback to 500ms): number
+fill (optional, fallback to 'forwards'): string
+
 ## This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -201,6 +237,9 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
+````
+
 ```
 
 ```
+````
