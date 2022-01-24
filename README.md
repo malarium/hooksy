@@ -186,11 +186,15 @@ const { move } = useAnimation();
 
 ACCEPTED OPTIONS:
 
-element: ref pointing to element
-x: number
-y: number
-timing (optional, fallback to 500ms): number
-fill (optional, fallback to 'forwards'): string
+```
+{
+  element: ref pointing to element
+  x: number
+  y: number
+  timing (optional, fallback to 500ms): number
+  fill (optional, fallback to 'forwards'): string
+}
+```
 
 ## This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
