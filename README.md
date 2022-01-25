@@ -227,9 +227,9 @@ ACCEPTED OPTIONS:
 }
 ```
 
-**rotate**
+## **rotate**
 
-Rotates element along its center.
+Rotates element around its center.
 
 ACCEPTED OPTIONS:
 

@@ -123,7 +123,7 @@ function App() {
       <button
         onClick={() => {
           rotate({
-            turnDegree: 1,
+            turnDegree: -1,
             unit: `turn`,
             element: divToTurn,
             duration: 1500,
