@@ -22,12 +22,25 @@ declare type AnimationPlayState =
 declare type CompositeOperation = "replace" | "add" | "accumulate";
 declare type DOMHighResTimeStamp = number;
 
-export interface Imove {
+interface IBaseAnimation {
   element: React.MutableRefObject<any>;
-  x: number;
-  y: number;
   duration?: number;
   fill?: FillMode;
   easing?: EasingMode;
+  iterations?: number;
+}
+export interface Imove extends IBaseAnimation {
+  x: number;
+  y: number;
   unit?: `px` | `%`;
+}
+
+export interface Iresize extends IBaseAnimation {
+  scale: number;
+  axis?: `X` | `Y`;
+}
+
+export interface Irotate extends IBaseAnimation {
+  turnDegree: number;
+  unit?: `deg` | `turn` | `rad`;
 }
