@@ -190,19 +190,55 @@ const { move } = useAnimation();
 
 ACCEPTED OPTIONS:
 
+**Besides their specific parameters all methods accept those basic ones:**
+
 ```
 {
-  element: ref pointing to element
+  element: React.MutableRefObject<any>; // ref pointing to element
+  duration: number; // (optional, fallback to 500ms)
+  fill: FillMode; // (optional, fallback to 'none'); 'none', 'forwards', 'backwards' and 'both' available
+  easing: EasingMode; // (optional, fallback to 'linear'); "linear", "ease-in", "ease-out", "ease-in-out", "linear", "step-start" and "step-end" available
+  iterations: number; // (optional, fallback to 1);
+}
+```
+
+Method-specific parameters:
+
+```
+{
   x: number // in percent
   y: number // in percent
-  duration (optional, fallback to 500ms): number
-  fill (optional, fallback to 'none'): string // 'none', 'forwards', 'backwards' and 'both' available
-  easing (optional, fallback to 'linear'): string // | "linear", "ease-in", "ease-out", "ease-in-out", "linear", "step-start" and "step-end" available
   unit (optional, fallback to '%'): string // '%' and 'px' available
 }
 ```
 
-## This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## **resize**
+
+Scales element up or down, also enables scaling on only one of the axis (stretching vertically or horizontally).
+
+EXAMPLE:
+
+```
+const { resize } = useAnimation();
+<div ref={divToResize}>This div will be resized</div>
+      <button
+        onClick={() =>
+          resize({
+            eelement: divToResize,
+            duration: 1500,
+            fill: "backwards",
+            easing: `ease-out`,
+            scale: 2,
+          });
+        }
+      >
+        Move!
+      </button>
+```
+
+ACCEPTED OPTIONS:
+
+## This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 
 ## Available Scripts
 
@@ -247,9 +283,14 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-````
+```
+
+```
 
 ```
 
 ```
-````
+
+```
+
+```
