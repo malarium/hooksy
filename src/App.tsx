@@ -66,11 +66,12 @@ function App() {
           // move(divToAnimate, 20, 20, undefined, 1500);
           move({
             element: divToAnimate,
-            x: 20,
-            y: 20,
+            x: 0,
+            y: 500,
             duration: 1500,
             fill: "forwards",
             easing: `ease-out`,
+            unit: `px`,
           });
         }}
       >

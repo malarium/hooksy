@@ -198,6 +198,7 @@ ACCEPTED OPTIONS:
   duration (optional, fallback to 500ms): number
   fill (optional, fallback to 'none'): string // 'none', 'forwards', 'backwards' and 'both' available
   easing (optional, fallback to 'linear'): string // | "linear", "ease-in", "ease-out", "ease-in-out", "linear", "step-start" and "step-end" available
+  unit (optional, fallback to '%'): string // '%' and 'px' available
 }
 ```
 

@@ -29,4 +29,5 @@ export interface Imove {
   duration?: number;
   fill?: FillMode;
   easing?: EasingMode;
+  unit?: `px` | `%`;
 }

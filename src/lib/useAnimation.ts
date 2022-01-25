@@ -1,4 +1,3 @@
-import React from "react";
 import { Imove } from "./helpers/interfaces";
 // TODO: Add 'combine' method that would chain animations with the same action (transform) - is that needed?
 // TODO: these can't be arrays - create interface and accept objects
@@ -7,7 +6,9 @@ const useAnimation = () => {
   const move = (moveData: Imove) => {
     const animation = [
       {
-        transform: `translate(${moveData.x}%, ${moveData.y}%)`,
+        transform: `translate(${moveData.x}${moveData.unit || `%`}, ${
+          moveData.y
+        }${moveData.unit || `%`})`,
       },
     ];
     const animationTiming = {
