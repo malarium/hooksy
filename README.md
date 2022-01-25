@@ -192,7 +192,7 @@ All methods of `useAnimation` hook can be used in the same manner. No further ex
 
 ACCEPTED OPTIONS:
 
-**Besides their specific parameters all methods accept those basic ones:**
+**Besides their specific parameters all methods of `useAnimation` hook accept these basic ones:**
 
 ```
 {
