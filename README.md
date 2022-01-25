@@ -188,6 +188,8 @@ const { move } = useAnimation();
       </button>
 ```
 
+All methods of `useAnimation` hook can be used in the same manner. No further examples will be specified.
+
 ACCEPTED OPTIONS:
 
 **Besides their specific parameters all methods accept those basic ones:**
@@ -216,27 +218,25 @@ Method-specific parameters:
 
 Scales element up or down, also enables scaling on only one of the axis (stretching vertically or horizontally).
 
-EXAMPLE:
+ACCEPTED OPTIONS:
 
 ```
-const { resize } = useAnimation();
-<div ref={divToResize}>This div will be resized</div>
-      <button
-        onClick={() =>
-          resize({
-            eelement: divToResize,
-            duration: 1500,
-            fill: "backwards",
-            easing: `ease-out`,
-            scale: 2,
-          });
-        }
-      >
-        Move!
-      </button>
+{
+  scale: number; // scale measurement: use negative number for scaling down and > 1 for scaling up.
+  axis?: `X` | `Y`; // (optional, fallback to empty string); Needs to be specified if we want to scale element only along one of the axis
+}
 ```
+
+**rotate**
+
+Rotates element along its center.
 
 ACCEPTED OPTIONS:
+
+```
+  turnDegree: number; // amount of clockwise rotations in chosen units (see below). Use negative numbers for counter-clockwise rotation.
+  unit?: `deg` | `turn` | `rad`; // (Optional, fallback to `deg`); Unit in which the rotation is specified (degrees, turns or radians available).
+```
 
 ## This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 
