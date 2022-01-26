@@ -28,6 +28,13 @@ interface IBaseAnimation {
   fill?: FillMode;
   easing?: EasingMode;
   iterations?: number;
+  direction?:
+    | `normal`
+    | `reverse`
+    | `alternate`
+    | `alternate-reverse`
+    | `initial`
+    | `inherit`;
 }
 export interface Imove extends IBaseAnimation {
   x: number;

@@ -97,6 +97,7 @@ function App() {
             element: divToMove,
             x: 100,
             y: 100,
+            direction: `alternate`,
             duration: 1500,
             easing: `ease-out`,
             fill: `forwards`,

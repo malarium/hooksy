@@ -9,6 +9,7 @@ const useAnimation = () => {
       fill: data.fill || `none`,
       easing: data.easing || `linear`,
       iterations: data.iterations || 1,
+      direction: data.direction || `normal`,
     };
   };
   const move = (moveData: Imove) => {
