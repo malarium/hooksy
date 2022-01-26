@@ -55,6 +55,9 @@ const useAnimation = () => {
     const rotationYdata = `${perspectiveData.perspectiveAxisYTilt}${
       perspectiveData.perspectiveAxisYTiltUnit || `deg`
     }`;
+    const rotationZdata = `${perspectiveData.perspectiveAxisZTilt}${
+      perspectiveData.perspectiveAxisZTiltUnit || `deg`
+    }`;
     perspectiveData.element.current.style.perspective = `${
       perspectiveData.perspective
     }${perspectiveData.unit || `px`}`;
@@ -62,7 +65,7 @@ const useAnimation = () => {
       {
         transform: `perspective(${perspectiveData.perspective}${
           perspectiveData.unit || `px`
-        }) rotateX(${rotationXdata}) rotateY(${rotationYdata})`,
+        }) rotateX(${rotationXdata}) rotateY(${rotationYdata}) rotateZ(${rotationZdata})`,
       },
     ];
     const perspectiveTiming = generateDefaultTimingOptions(perspectiveData);

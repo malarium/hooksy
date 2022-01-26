@@ -266,6 +266,23 @@ ACCEPTED OPTIONS:
   unit?: `deg` | `turn` | `rad`; // (Optional, fallback to `deg`); Unit in which the rotation is specified (degrees, turns or radians available).
 ```
 
+## **perspective**
+
+Rotates element in 3D space with perspective effect.
+
+ACCEPTED OPTIONS:
+
+```
+  perspective: number | `none`; // Value of perspective. Lower value means closer to the observer.
+  unit?: `px` | `cm` | `px` | `em` | `rem` | `pt` | `vh` | `vw` | `pc` | `in`; // Perspective units.
+  perspectiveAxisXTilt: number; // Rotation is necessary for perspective to appear. This specifies rotataion on X axis.
+  perspectiveAxisYTilt: number; // Specifies rotation on Y axis.
+  perspectiveAxisZTilt: number; // Specifies rotation on Z axis.
+  perspectiveAxisXTiltUnit?: (Optional, fallback to ); `deg` | `turn` | `rad`;
+  perspectiveAxisYTiltUnit?: `deg` | `turn` | `rad`;
+  perspectiveAxisZTiltUnit?: `deg` | `turn` | `rad`;
+```
+
 ## This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 
 ## Available Scripts

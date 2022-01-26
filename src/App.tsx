@@ -157,6 +157,7 @@ function App() {
             unit: "px",
             perspectiveAxisXTilt: -120,
             perspectiveAxisYTilt: 190,
+            perspectiveAxisZTilt: -120,
             duration: 1500,
             direction: `alternate`,
             iterations: 2,

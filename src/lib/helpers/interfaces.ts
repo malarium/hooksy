@@ -56,7 +56,9 @@ export interface IPerspective extends IBaseAnimation {
   perspective: number | `none`;
   perspectiveAxisXTilt: number;
   perspectiveAxisYTilt: number;
+  perspectiveAxisZTilt: number;
   perspectiveAxisXTiltUnit?: `deg` | `turn` | `rad`;
   perspectiveAxisYTiltUnit?: `deg` | `turn` | `rad`;
+  perspectiveAxisZTiltUnit?: `deg` | `turn` | `rad`;
   unit?: `px` | `cm` | `px` | `em` | `rem` | `pt` | `vh` | `vw` | `pc` | `in`;
 }
