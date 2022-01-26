@@ -15,6 +15,7 @@ function App() {
   const divToMove: MutableRefObject<any> = React.useRef();
   const divToResize: MutableRefObject<any> = React.useRef();
   const divToTurn: MutableRefObject<any> = React.useRef();
+  const divForPerspective: MutableRefObject<any> = React.useRef();
   const sampleArrayOfStrings: string[] = [
     "these",
     "strings",
@@ -30,7 +31,7 @@ function App() {
   const arraysDifference: number[] = useDifference(array1, array2);
   // const { x, y } = useCursorPosition();
   const { x: staticX, y: staticY } = useCursorStaticPosition();
-  const { move, resize, rotate } = useAnimation();
+  const { move, resize, rotate, perspective } = useAnimation();
   const { getDimensions, getBoxModel } = useGetDimensions();
 
   // const animationTest = useColorShift(divToAnimate, `red`, `blue`, 1000);
@@ -90,6 +91,18 @@ function App() {
       >
         This div rotates
       </div>
+      <div
+        style={{
+          width: `70px`,
+          height: `80px`,
+          backgroundColor: `orange`,
+          padding: `10px`,
+          margin: `10px`,
+        }}
+        ref={divForPerspective}
+      >
+        This div is put in perspective
+      </div>
       <button
         onClick={() => {
           move({
@@ -115,6 +128,8 @@ function App() {
             fill: "backwards",
             easing: `ease-out`,
             scale: 2,
+            direction: `alternate`,
+            iterations: 2,
           });
         }}
       >
@@ -133,6 +148,23 @@ function App() {
         }}
       >
         Turn!
+      </button>
+      <button
+        onClick={() => {
+          perspective({
+            element: divForPerspective,
+            perspective: 70,
+            unit: "px",
+            perspectiveAxisXTilt: -120,
+            perspectiveAxisYTilt: 190,
+            duration: 1500,
+            direction: `alternate`,
+            iterations: 2,
+            fill: `forwards`,
+          });
+        }}
+      >
+        Put in perspective!
       </button>
     </div>
   );

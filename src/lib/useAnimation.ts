@@ -1,9 +1,11 @@
-import { Imove, Iresize, Irotate } from "./helpers/interfaces";
+import { IMove, IPerspective, IResize, IRotate } from "./helpers/interfaces";
 // TODO: Add 'combine' method that would chain animations with the same action (transform) - is that needed?
 // TODO: these can't be arrays - create interface and accept objects
 
 const useAnimation = () => {
-  const generateDefaultTimingOptions = (data: Imove | Iresize | Irotate) => {
+  const generateDefaultTimingOptions = (
+    data: IMove | IResize | IRotate | IPerspective
+  ) => {
     return {
       duration: data.duration || 500,
       fill: data.fill || `none`,
@@ -12,7 +14,7 @@ const useAnimation = () => {
       direction: data.direction || `normal`,
     };
   };
-  const move = (moveData: Imove) => {
+  const move = (moveData: IMove) => {
     const animation = [
       {
         transform: `translate(${moveData.x}${moveData.unit || `%`}, ${
@@ -25,7 +27,7 @@ const useAnimation = () => {
     return moveData.element.current.animate([...animation], animationTiming);
   };
 
-  const resize = (resizeData: Iresize) => {
+  const resize = (resizeData: IResize) => {
     const scaleOption: string = `scale${resizeData.axis || ``}`;
     const animation = [
       {
@@ -35,7 +37,7 @@ const useAnimation = () => {
     const animationTiming = generateDefaultTimingOptions(resizeData);
     return resizeData.element.current.animate(animation, animationTiming);
   };
-  const rotate = (rotateData: Irotate) => {
+  const rotate = (rotateData: IRotate) => {
     const animation = [
       {
         transform: `rotate(${rotateData.turnDegree}${
@@ -46,8 +48,31 @@ const useAnimation = () => {
     const animationTiming = generateDefaultTimingOptions(rotateData);
     return rotateData.element.current.animate(animation, animationTiming);
   };
+  const perspective = (perspectiveData: IPerspective) => {
+    const rotationXdata = `${perspectiveData.perspectiveAxisXTilt}${
+      perspectiveData.perspectiveAxisXTiltUnit || `deg`
+    }`;
+    const rotationYdata = `${perspectiveData.perspectiveAxisYTilt}${
+      perspectiveData.perspectiveAxisYTiltUnit || `deg`
+    }`;
+    perspectiveData.element.current.style.perspective = `${
+      perspectiveData.perspective
+    }${perspectiveData.unit || `px`}`;
+    const animation = [
+      {
+        transform: `perspective(${perspectiveData.perspective}${
+          perspectiveData.unit || `px`
+        }) rotateX(${rotationXdata}) rotateY(${rotationYdata})`,
+      },
+    ];
+    const perspectiveTiming = generateDefaultTimingOptions(perspectiveData);
+    return perspectiveData.element.current.animate(
+      animation,
+      perspectiveTiming
+    );
+  };
 
-  return { move, resize, rotate };
+  return { move, resize, rotate, perspective };
 };
 
 export default useAnimation;

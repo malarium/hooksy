@@ -36,18 +36,27 @@ interface IBaseAnimation {
     | `initial`
     | `inherit`;
 }
-export interface Imove extends IBaseAnimation {
+export interface IMove extends IBaseAnimation {
   x: number;
   y: number;
   unit?: `px` | `%`;
 }
 
-export interface Iresize extends IBaseAnimation {
+export interface IResize extends IBaseAnimation {
   scale: number;
   axis?: `X` | `Y`;
 }
 
-export interface Irotate extends IBaseAnimation {
+export interface IRotate extends IBaseAnimation {
   turnDegree: number;
   unit?: `deg` | `turn` | `rad`;
+}
+
+export interface IPerspective extends IBaseAnimation {
+  perspective: number | `none`;
+  perspectiveAxisXTilt: number;
+  perspectiveAxisYTilt: number;
+  perspectiveAxisXTiltUnit?: `deg` | `turn` | `rad`;
+  perspectiveAxisYTiltUnit?: `deg` | `turn` | `rad`;
+  unit?: `px` | `cm` | `px` | `em` | `rem` | `pt` | `vh` | `vw` | `pc` | `in`;
 }
