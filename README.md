@@ -283,6 +283,25 @@ ACCEPTED OPTIONS:
   perspectiveAxisZTiltUnit?: `deg` | `turn` | `rad`;
 ```
 
+## **chainBackgroundColors**
+
+Chains a sequence of colors shift.
+
+ACCEPTED OPTIONS:
+
+```
+// An array of objects. Each object must have a 'color' string value and optional 'offset' - a number value that delays sigle change. WARNING! 'offset' must be a number between 0 and 1 where 0 = 0% of animation time and 1 = 100% of animation time. To delay animation which lasts 5 seconts for 1 second 'offset' should be set to 0.2 as 5s x 0.2 = 1s.
+colors: [
+          { color: `violet`, offset: 0.3 },
+          { color: `indigo` },
+          { color: `blue` },
+          { color: `green` },
+          { color: `yellow` },
+          { color: `orange` },
+          { color: `red` },
+        ]
+```
+
 ## This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 
 ## Available Scripts
@@ -328,7 +347,7 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-```
+````
 
 ```
 
@@ -339,3 +358,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ```
 
 ```
+
+```
+````

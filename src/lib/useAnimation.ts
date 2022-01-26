@@ -1,3 +1,4 @@
+import { hooksyError } from "./helpers/consoleInfo";
 import {
   IChainColors,
   IMove,
@@ -86,6 +87,12 @@ const useAnimation = () => {
   const chainBackgroundColors = (chainColorsData: IChainColors) => {
     const animation: { background: string; offset: number | null }[] = [];
     chainColorsData.colors.forEach((item) => {
+      if (item.offset && (item.offset > 1 || item.offset < 0)) {
+        hooksyError(
+          `OFFSET in 'chainBackgroundColors' must have a minimal value of 0 and maximal value of 1. Use decimal fractions.`
+        );
+        return;
+      }
       animation.push({
         background: item.color,
         offset: item.offset || null,

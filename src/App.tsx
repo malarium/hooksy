@@ -3,13 +3,6 @@ import useAnimation from "./lib/useAnimation";
 import useCursorStaticPosition from "./lib/useCursorStaticPosition";
 import useDifference from "./lib/useDifference";
 import useGetDimensions from "./lib/useGetDimensions";
-import useOnMount from "./lib/useOnMount";
-import useOnUnmount from "./lib/useOnUnmount";
-import useSortAplhabetically from "./lib/useSortAplphabetically";
-
-function logInConsole(data: any) {
-  console.log(data);
-}
 
 function App() {
   const divToMove: MutableRefObject<any> = React.useRef();
@@ -39,15 +32,16 @@ function App() {
 
   // const animationTest = useColorShift(divToAnimate, `red`, `blue`, 1000);
 
-  const sampleArrayOfStringsSorted =
-    useSortAplhabetically(sampleArrayOfStrings);
+  // const sampleArrayOfStringsSorted =
+  //   useSortAplhabetically(sampleArrayOfStrings);
 
-  useOnMount(() => {
-    logInConsole("rendered");
-    logInConsole(sampleArrayOfStringsSorted);
-    logInConsole(arraysDifference);
-  });
-  useOnUnmount(() => logInConsole("unmounted"));
+  // useOnMount(() => {
+  //   fancyLogInConsole(`WELCOME TO HOOKSY!`);
+  //   logInConsole("rendered");
+  //   logInConsole(sampleArrayOfStringsSorted);
+  //   logInConsole(arraysDifference);
+  // });
+  // useOnUnmount(() => logInConsole("unmounted"));
 
   function getDivDimensions() {
     console.log(getDimensions(divToResize));
@@ -263,7 +257,7 @@ function App() {
             direction: `alternate`,
             iterations: 2,
             colors: [
-              { color: `violet` },
+              { color: `violet`, offset: 0.3 },
               { color: `indigo` },
               { color: `blue` },
               { color: `green` },
