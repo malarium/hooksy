@@ -17,6 +17,7 @@ function App() {
   const divToTurn: MutableRefObject<any> = React.useRef();
   const divForPerspective: MutableRefObject<any> = React.useRef();
   const divForCombo: MutableRefObject<any> = React.useRef();
+  const divToColor: MutableRefObject<any> = React.useRef();
   const sampleArrayOfStrings: string[] = [
     "these",
     "strings",
@@ -68,6 +69,17 @@ function App() {
         ref={divToMove}
       >
         This div moves
+      </div>
+      <div
+        style={{
+          width: `250px`,
+          backgroundColor: `violet`,
+          padding: `5px`,
+          margin: `10px`,
+        }}
+        ref={divToColor}
+      >
+        This div changes colors
       </div>
       <div
         style={{
@@ -137,6 +149,27 @@ function App() {
       </button>
       <button
         onClick={() => {
+          chainBackgroundColors({
+            element: divToColor,
+            duration: 1500,
+            direction: `alternate`,
+            iterations: 4,
+            colors: [
+              { color: `violet` },
+              { color: `indigo` },
+              { color: `blue` },
+              { color: `green` },
+              { color: `yellow` },
+              { color: `orange` },
+              { color: `red` },
+            ],
+          });
+        }}
+      >
+        Cahnge colors!
+      </button>
+      <button
+        onClick={() => {
           resize({
             element: divToResize,
             duration: 1500,
@@ -188,27 +221,34 @@ function App() {
             element: divForCombo,
             perspective: 190,
             unit: "px",
-            perspectiveAxisXTilt: 120,
-            perspectiveAxisYTilt: 0,
-            perspectiveAxisZTilt: 0,
+            perspectiveAxisXTilt: 180,
+            perspectiveAxisYTilt: 180,
+            perspectiveAxisZTilt: 180,
             duration: 3000,
             direction: `alternate`,
             iterations: 2,
-            fill: `forwards`,
           });
-          resize({
-            axis: `X`,
+
+          chainBackgroundColors({
             element: divForCombo,
-            duration: 3000,
-            easing: `ease-out`,
-            scale: 2,
+            duration: 1500,
             direction: `alternate`,
-            iterations: 2,
+            iterations: 4,
+            colors: [
+              { color: `violet` },
+              { color: `indigo` },
+              { color: `blue` },
+              { color: `green` },
+              { color: `yellow` },
+              { color: `orange` },
+              { color: `red` },
+            ],
           });
+
           move({
-            element: divForCombo,
-            x: 50,
-            y: 130,
+            element: divToMove,
+            x: 100,
+            y: 100,
             direction: `alternate`,
             duration: 3000,
             easing: `ease-out`,
@@ -216,8 +256,9 @@ function App() {
             unit: `px`,
             iterations: 2,
           });
+
           chainBackgroundColors({
-            element: divForCombo,
+            element: divToColor,
             duration: 3000,
             direction: `alternate`,
             iterations: 2,
@@ -230,6 +271,38 @@ function App() {
               { color: `orange` },
               { color: `red` },
             ],
+          });
+
+          resize({
+            element: divToResize,
+            duration: 3000,
+            fill: "backwards",
+            easing: `ease-out`,
+            scale: 2,
+            direction: `alternate`,
+            iterations: 2,
+          });
+
+          rotate({
+            turnDegree: -1,
+            unit: `turn`,
+            element: divToTurn,
+            duration: 6000,
+            fill: "backwards",
+            easing: `ease-out`,
+          });
+
+          perspective({
+            element: divForPerspective,
+            perspective: 70,
+            unit: "px",
+            perspectiveAxisXTilt: -120,
+            perspectiveAxisYTilt: 190,
+            perspectiveAxisZTilt: -120,
+            duration: 3000,
+            direction: `alternate`,
+            iterations: 2,
+            fill: `forwards`,
           });
         }}
       >

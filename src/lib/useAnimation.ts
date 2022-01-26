@@ -7,6 +7,7 @@ import {
 } from "./helpers/interfaces";
 // TODO: Add 'combine' method that would chain animations with the same action (transform) - is that needed?
 // TODO: add offset for animations - in seconds
+// TODO: colour change should support gradients
 
 const useAnimation = () => {
   const generateDefaultTimingOptions = (
@@ -18,9 +19,8 @@ const useAnimation = () => {
       easing: data.easing || `linear`,
       iterations: data.iterations || 1,
       direction: data.direction || `normal`,
-      // offset: data.offset || 1.5,
-      composite: `add`,
-      // iterationComposite: `accumulate`,
+      // composite: `add`,
+      iterationComposite: `replace`,
     };
   };
   const move = (moveData: IMove) => {
@@ -84,10 +84,10 @@ const useAnimation = () => {
     );
   };
   const chainBackgroundColors = (chainColorsData: IChainColors) => {
-    const animation: { backgroundColor: string; offset: number | null }[] = [];
+    const animation: { background: string; offset: number | null }[] = [];
     chainColorsData.colors.forEach((item) => {
       animation.push({
-        backgroundColor: item.color,
+        background: item.color,
         offset: item.offset || null,
       });
     });
