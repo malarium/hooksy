@@ -28,6 +28,7 @@ interface IBaseAnimation {
   fill?: FillMode;
   easing?: EasingMode;
   iterations?: number;
+  offset?: number;
   direction?:
     | `normal`
     | `reverse`
@@ -61,4 +62,8 @@ export interface IPerspective extends IBaseAnimation {
   perspectiveAxisYTiltUnit?: `deg` | `turn` | `rad`;
   perspectiveAxisZTiltUnit?: `deg` | `turn` | `rad`;
   unit?: `px` | `cm` | `px` | `em` | `rem` | `pt` | `vh` | `vw` | `pc` | `in`;
+}
+
+export interface IChainColors extends IBaseAnimation {
+  colors: { color: string; offset?: number }[];
 }

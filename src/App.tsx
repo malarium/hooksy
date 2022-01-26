@@ -16,6 +16,7 @@ function App() {
   const divToResize: MutableRefObject<any> = React.useRef();
   const divToTurn: MutableRefObject<any> = React.useRef();
   const divForPerspective: MutableRefObject<any> = React.useRef();
+  const divForCombo: MutableRefObject<any> = React.useRef();
   const sampleArrayOfStrings: string[] = [
     "these",
     "strings",
@@ -31,7 +32,8 @@ function App() {
   const arraysDifference: number[] = useDifference(array1, array2);
   // const { x, y } = useCursorPosition();
   const { x: staticX, y: staticY } = useCursorStaticPosition();
-  const { move, resize, rotate, perspective } = useAnimation();
+  const { move, resize, rotate, perspective, chainBackgroundColors } =
+    useAnimation();
   const { getDimensions, getBoxModel } = useGetDimensions();
 
   // const animationTest = useColorShift(divToAnimate, `red`, `blue`, 1000);
@@ -103,6 +105,19 @@ function App() {
       >
         This div is put in perspective
       </div>
+      <div
+        style={{
+          width: `90px`,
+          height: `90px`,
+          backgroundColor: `violet`,
+          padding: `10px`,
+          margin: `10px`,
+        }}
+        ref={divForCombo}
+      >
+        This is a combo!
+      </div>
+
       <button
         onClick={() => {
           move({
@@ -166,6 +181,59 @@ function App() {
         }}
       >
         Put in perspective!
+      </button>
+      <button
+        onClick={() => {
+          perspective({
+            element: divForCombo,
+            perspective: 190,
+            unit: "px",
+            perspectiveAxisXTilt: 120,
+            perspectiveAxisYTilt: 0,
+            perspectiveAxisZTilt: 0,
+            duration: 3000,
+            direction: `alternate`,
+            iterations: 2,
+            fill: `forwards`,
+          });
+          resize({
+            axis: `X`,
+            element: divForCombo,
+            duration: 3000,
+            easing: `ease-out`,
+            scale: 2,
+            direction: `alternate`,
+            iterations: 2,
+          });
+          move({
+            element: divForCombo,
+            x: 50,
+            y: 130,
+            direction: `alternate`,
+            duration: 3000,
+            easing: `ease-out`,
+            fill: `forwards`,
+            unit: `px`,
+            iterations: 2,
+          });
+          chainBackgroundColors({
+            element: divForCombo,
+            duration: 3000,
+            direction: `alternate`,
+            iterations: 2,
+            colors: [
+              { color: `violet` },
+              { color: `indigo` },
+              { color: `blue` },
+              { color: `green` },
+              { color: `yellow` },
+              { color: `orange` },
+              { color: `red` },
+            ],
+          });
+        }}
+      >
+        Run a combo!
       </button>
     </div>
   );

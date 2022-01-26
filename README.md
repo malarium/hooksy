@@ -227,7 +227,7 @@ ACCEPTED OPTIONS:
   duration: number; // (optional, fallback to 500ms)
   fill: FillMode; // (optional, fallback to 'none'); 'none', 'forwards', 'backwards' and 'both' available
   easing: EasingMode; // (optional, fallback to 'linear'); "linear", "ease-in", "ease-out", "ease-in-out", "linear", "step-start" and "step-end" available
-  iterations: number; // (optional, fallback to 1);
+  iterations: number; // (optional, fallback to 1); use "Infinite" for continual animation.
   direction: string; // (optional, fallback to "normal"); "normal", "reverse", "alternate", "alternate-reverse", "initial" and "inherit" available
 }
 ```

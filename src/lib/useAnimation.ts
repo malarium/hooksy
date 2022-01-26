@@ -1,10 +1,16 @@
-import { IMove, IPerspective, IResize, IRotate } from "./helpers/interfaces";
+import {
+  IChainColors,
+  IMove,
+  IPerspective,
+  IResize,
+  IRotate,
+} from "./helpers/interfaces";
 // TODO: Add 'combine' method that would chain animations with the same action (transform) - is that needed?
-// TODO: these can't be arrays - create interface and accept objects
+// TODO: add offset for animations - in seconds
 
 const useAnimation = () => {
   const generateDefaultTimingOptions = (
-    data: IMove | IResize | IRotate | IPerspective
+    data: IMove | IResize | IRotate | IPerspective | IChainColors
   ) => {
     return {
       duration: data.duration || 500,
@@ -12,6 +18,9 @@ const useAnimation = () => {
       easing: data.easing || `linear`,
       iterations: data.iterations || 1,
       direction: data.direction || `normal`,
+      // offset: data.offset || 1.5,
+      composite: `add`,
+      // iterationComposite: `accumulate`,
     };
   };
   const move = (moveData: IMove) => {
@@ -24,7 +33,7 @@ const useAnimation = () => {
     ];
     const animationTiming = generateDefaultTimingOptions(moveData);
     console.log(`Animation: `, animation);
-    return moveData.element.current.animate([...animation], animationTiming);
+    return moveData.element.current.animate(animation, animationTiming);
   };
 
   const resize = (resizeData: IResize) => {
@@ -74,8 +83,23 @@ const useAnimation = () => {
       perspectiveTiming
     );
   };
+  const chainBackgroundColors = (chainColorsData: IChainColors) => {
+    const animation: { backgroundColor: string; offset: number | null }[] = [];
+    chainColorsData.colors.forEach((item) => {
+      animation.push({
+        backgroundColor: item.color,
+        offset: item.offset || null,
+      });
+    });
+    const chainBackgroundColorsTiming =
+      generateDefaultTimingOptions(chainColorsData);
+    return chainColorsData.element.current.animate(
+      animation,
+      chainBackgroundColorsTiming
+    );
+  };
 
-  return { move, resize, rotate, perspective };
+  return { move, resize, rotate, perspective, chainBackgroundColors };
 };
 
 export default useAnimation;
