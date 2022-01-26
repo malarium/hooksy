@@ -51,40 +51,67 @@ useOnUnmount(() => {
 
 ## `useGetDimensions`
 
-- Accepts a ref (React.MutableRefObject) and returns a set of values in pixels:
+- This hook provides methods for getting sizes of different elements of box model:
 
-  ```
-  x: number; // horizontal position
-  y: number; // vertical position
-  width: number; // element's width
-  height: number; // element's height
+AVAILABLE METHODS:
 
-  //And element's shift from screen borders:
+## **getDimensions**
 
-  top: number;
-  right: number;
-  left: number;
-  bottom: number;
-  ```
+This is the equivalnet of `getBoundingClientRect` method. It accepts a ref as parameter and returns:
+
+```
+x: number; // horizontal position
+y: number; // vertical position
+width: number; // element's width
+height: number; // element's height
+
+//And element's shift from screen borders:
+
+top: number;
+right: number;
+left: number;
+bottom: number;
+```
 
 EXAMPLE:
 
 ```
-function useGetButtonDimensions() {
-    const { width, height, left, top } = useGetDimensions(button);
-    console.log(
-        `width: ${width}px, height: ${height}px, left: ${left}px, top: ${top}px `
-    );
+const { getDimensions } = useGetDimensions();
+...
+<div ref={elementToCheck}>This is a div to check</div>
+...
+console.log(getDimensions(elementToCheck))
+
+```
+
+## **getBoxModel**
+
+This method also accepts a fer and provides data on element's measurements. It returns:
+
+```
+{
+    "margins": {
+        "top": 10,
+        "right": 10,
+        "bottom": 10,
+        "left": 10
+    },
+    "border": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0,
+        "radius": 0
+    },
+    "padding": {
+        "top": 10,
+        "right": 10,
+        "bottom": 10,
+        "left": 10
+    },
+    "contentHeight": 50,
+    "contentWidth": 50
 }
-
-return (
-    <div className="App">
-        <button ref={button} onClick={useGetButtonDimensions}>
-            Check this button dimensions
-        </button>
-    </div>
-);
-
 ```
 
 ## `useSortAlphabetically`
