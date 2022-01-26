@@ -1,5 +1,7 @@
 import React from "react";
-
+// TODO: This should return methods:
+// 1. dimensions as in getBoundigClientRect
+// 2. measurements of content, padding, border and margin
 export interface rect {
   x: number;
   y: number;
@@ -11,10 +13,40 @@ export interface rect {
   bottom: number;
 }
 
-const useGetDimensions = (element: React.MutableRefObject<any>): rect => {
-  const { x, y, width, height, top, right, bottom, left } =
-    element.current.getBoundingClientRect();
-  return { x, y, width, height, top, right, bottom, left };
+const useGetDimensions = () => {
+  const getDimensions = (element: React.MutableRefObject<any>): rect => {
+    const { x, y, width, height, top, right, bottom, left } =
+      element.current.getBoundingClientRect();
+    return { x, y, width, height, top, right, bottom, left };
+  };
+  const getBoxModel = (element: React.MutableRefObject<any>) => {
+    const style: CSSStyleDeclaration = getComputedStyle(element.current);
+    const margins = {
+      top: parseInt(style.marginTop),
+      right: parseInt(style.marginRight),
+      bottom: parseInt(style.marginBottom),
+      left: parseInt(style.marginLeft),
+    };
+    const border = {
+      top: parseInt(style.borderTop),
+      right: parseInt(style.borderRight),
+      bottom: parseInt(style.borderBottom),
+      left: parseInt(style.borderLeft),
+      radius: parseInt(style.borderRadius),
+    };
+    const padding = {
+      top: parseInt(style.paddingTop),
+      right: parseInt(style.paddingRight),
+      bottom: parseInt(style.paddingBottom),
+      left: parseInt(style.paddingLeft),
+    };
+    const contentHeight: number =
+      element.current.clientHeight - (padding.top + padding.bottom);
+    const contentWidth: number =
+      element.current.clientWidth - (padding.left + padding.right);
+    return { margins, border, padding, contentHeight, contentWidth };
+  };
+  return { getBoxModel, getDimensions };
 };
 
 export default useGetDimensions;

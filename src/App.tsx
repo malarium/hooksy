@@ -31,6 +31,7 @@ function App() {
   // const { x, y } = useCursorPosition();
   const { x: staticX, y: staticY } = useCursorStaticPosition();
   const { move, resize, rotate } = useAnimation();
+  const { getDimensions, getBoxModel } = useGetDimensions();
 
   // const animationTest = useColorShift(divToAnimate, `red`, `blue`, 1000);
 
@@ -44,16 +45,14 @@ function App() {
   });
   useOnUnmount(() => logInConsole("unmounted"));
 
-  function useGetButtonDimensions() {
-    const { width, height, left, top } = useGetDimensions(divToResize);
-    logInConsole(
-      `width:  ${width}px, height: ${height}px, left: ${left}px, top: ${top}px `
-    );
+  function getDivDimensions() {
+    console.log(getDimensions(divToResize));
+    console.log(getBoxModel(divToResize));
   }
 
   return (
     <div className="App">
-      <button onClick={useGetButtonDimensions}>CLICK</button>
+      <button onClick={getDivDimensions}>CLICK</button>
       {/* <p>{`Mouse position: X: ${x}, Y: ${y}`}</p> */}
       <p>{`Mouse position at click: X: ${staticX}, Y: ${staticY}`}</p>
       <div
