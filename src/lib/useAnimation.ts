@@ -1,5 +1,6 @@
 import { hooksyError } from "./helpers/consoleInfo";
 import {
+  IAnimateGradient,
   IChainColors,
   IMove,
   IPerspective,
@@ -12,7 +13,13 @@ import {
 
 const useAnimation = () => {
   const generateDefaultTimingOptions = (
-    data: IMove | IResize | IRotate | IPerspective | IChainColors
+    data:
+      | IMove
+      | IResize
+      | IRotate
+      | IPerspective
+      | IChainColors
+      | IAnimateGradient
   ) => {
     return {
       duration: data.duration || 500,
@@ -106,7 +113,32 @@ const useAnimation = () => {
     );
   };
 
-  return { move, resize, rotate, perspective, chainBackgroundColors };
+  const animateGradient = (animateGradientData: IAnimateGradient) => {
+    const animation = [
+      {
+        transform: `backgroundPositionX(0%))`,
+      },
+      {
+        transform: `backgroundPositionX(${
+          (animateGradientData.spread || 2) * 100
+        }%))`,
+      },
+    ];
+    const animationTiming = generateDefaultTimingOptions(animateGradientData);
+    return animateGradientData.element.current.animate(
+      animation,
+      animationTiming
+    );
+  };
+
+  return {
+    move,
+    resize,
+    rotate,
+    perspective,
+    chainBackgroundColors,
+    animateGradient,
+  };
 };
 
 export default useAnimation;

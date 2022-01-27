@@ -119,10 +119,10 @@ function App() {
         style={{
           width: `190px`,
           height: `190px`,
-          background: `linear-gradient(to right, rgba(255, 0, 0, 1), 
-          rgba(255, 250, 0, 1), rgba(0,255,255,1), rgba(255, 0, 0, 1))`,
-          backgroundSize: `600%`,
-          backgroundPositionX: `300%`,
+          background: `linear-gradient(to right, rgb(255, 0, 0), 
+          rgba(255, 250, 0, 1), rgb(0,255,255), rgb(255, 0, 0))`,
+          backgroundSize: `500%`,
+          backgroundPositionX: `100%`,
           padding: `10px`,
           margin: `10px`,
         }}

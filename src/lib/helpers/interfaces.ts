@@ -67,3 +67,8 @@ export interface IPerspective extends IBaseAnimation {
 export interface IChainColors extends IBaseAnimation {
   colors: { color: string; offset?: number }[];
 }
+
+export interface IAnimateGradient extends IBaseAnimation {
+  spread?: 1 | 2 | 3 | 4 | 5;
+  colors: { color: string }[];
+}
