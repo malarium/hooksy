@@ -1,8 +1,12 @@
 import React, { MutableRefObject } from "react";
+import { fancyLogInConsole, logInConsole } from "./lib/helpers/consoleInfo";
 import useAnimation from "./lib/useAnimation";
 import useCursorStaticPosition from "./lib/useCursorStaticPosition";
 import useDifference from "./lib/useDifference";
 import useGetDimensions from "./lib/useGetDimensions";
+import useOnMount from "./lib/useOnMount";
+import useOnUnmount from "./lib/useOnUnmount";
+import useSortAplhabetically from "./lib/useSortAplphabetically";
 
 function App() {
   const divToMove: MutableRefObject<any> = React.useRef();
@@ -11,6 +15,7 @@ function App() {
   const divForPerspective: MutableRefObject<any> = React.useRef();
   const divForCombo: MutableRefObject<any> = React.useRef();
   const divToColor: MutableRefObject<any> = React.useRef();
+  const divForGradientChange: MutableRefObject<any> = React.useRef();
   const sampleArrayOfStrings: string[] = [
     "these",
     "strings",
@@ -32,16 +37,15 @@ function App() {
 
   // const animationTest = useColorShift(divToAnimate, `red`, `blue`, 1000);
 
-  // const sampleArrayOfStringsSorted =
-  //   useSortAplhabetically(sampleArrayOfStrings);
+  const sampleArrayOfStringsSorted =
+    useSortAplhabetically(sampleArrayOfStrings);
 
-  // useOnMount(() => {
-  //   fancyLogInConsole(`WELCOME TO HOOKSY!`);
-  //   logInConsole("rendered");
-  //   logInConsole(sampleArrayOfStringsSorted);
-  //   logInConsole(arraysDifference);
-  // });
-  // useOnUnmount(() => logInConsole("unmounted"));
+  useOnMount(() => {
+    logInConsole("rendered");
+    logInConsole(sampleArrayOfStringsSorted);
+    logInConsole(arraysDifference);
+  });
+  useOnUnmount(() => logInConsole("unmounted"));
 
   function getDivDimensions() {
     console.log(getDimensions(divToResize));
@@ -110,6 +114,21 @@ function App() {
         ref={divForPerspective}
       >
         This div is put in perspective
+      </div>
+      <div
+        style={{
+          width: `190px`,
+          height: `190px`,
+          background: `linear-gradient(to right, rgba(255, 0, 0, 1), 
+          rgba(255, 250, 0, 1), rgba(0,255,255,1), rgba(255, 0, 0, 1))`,
+          backgroundSize: `600%`,
+          backgroundPositionX: `300%`,
+          padding: `10px`,
+          margin: `10px`,
+        }}
+        ref={divForGradientChange}
+      >
+        This div has changeable gradient
       </div>
       <div
         style={{
@@ -211,6 +230,7 @@ function App() {
       </button>
       <button
         onClick={() => {
+          fancyLogInConsole(`COMBO TIME!`);
           perspective({
             element: divForCombo,
             perspective: 190,
