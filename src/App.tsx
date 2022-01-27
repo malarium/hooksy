@@ -239,8 +239,8 @@ function App() {
           animateGradient({
             element: divForGradientChange,
             colors: [`rgb(255, 0, 0)`, `rgb(0, 255, 0)`, `rgb(0, 0, 255)`],
-            spread: 4,
-            duration: 3000,
+            spread: 5,
+            duration: 20000,
             direction: `alternate`,
             iterations: 2,
             fill: `forwards`,

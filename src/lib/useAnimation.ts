@@ -121,12 +121,10 @@ const useAnimation = () => {
     console.log(styleString);
     const animation = [
       {
-        transform: `backgroundPositionX(0%)`,
+        backgroundPositionX: 0,
       },
       {
-        transform: `backgroundPositionX(${
-          (animateGradientData.spread || 2) * 100
-        }%))`,
+        backgroundPositionX: `${(animateGradientData.spread || 2) * 100}`,
       },
     ];
     const animationTiming = generateDefaultTimingOptions(animateGradientData);
