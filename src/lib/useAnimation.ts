@@ -1,3 +1,4 @@
+import React from "react";
 import { hooksyError } from "./helpers/consoleInfo";
 import {
   IAnimateGradient,
@@ -115,16 +116,21 @@ const useAnimation = () => {
 
   const animateGradient = (animateGradientData: IAnimateGradient) => {
     const styleString =
-      animateGradientData.colors.reduce((acc, val): string => {
-        return (acc += `val,`);
+      animateGradientData.colors.reduce((acc, val, i): string => {
+        return (acc +=
+          i < animateGradientData.colors.length - 1 ? `${val},` : `${val}`);
       }, `linear-gradient(to right,`) + `)`;
     console.log(styleString);
+    animateGradientData.element.current.style.background = styleString;
+    animateGradientData.element.current.style.backgroundSize = `${
+      (animateGradientData.spread || 2) * 100
+    }%`;
     const animation = [
       {
         backgroundPositionX: 0,
       },
       {
-        backgroundPositionX: `${(animateGradientData.spread || 2) * 100}`,
+        backgroundPositionX: `100%`,
       },
     ];
     const animationTiming = generateDefaultTimingOptions(animateGradientData);

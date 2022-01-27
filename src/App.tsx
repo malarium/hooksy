@@ -125,10 +125,7 @@ function App() {
         style={{
           width: `190px`,
           height: `190px`,
-          background: `linear-gradient(to right, rgb(255, 0, 0), 
-          rgba(255, 250, 0, 1), rgb(0,255,255), rgb(255, 0, 0))`,
-          backgroundSize: `500%`,
-          backgroundPositionX: `100%`,
+          backgroundColor: `rebeccapurple`,
           padding: `10px`,
           margin: `10px`,
         }}
@@ -238,8 +235,8 @@ function App() {
         onClick={() => {
           animateGradient({
             element: divForGradientChange,
-            colors: [`rgb(255, 0, 0)`, `rgb(0, 255, 0)`, `rgb(0, 0, 255)`],
-            spread: 5,
+            colors: [`#fc466b`, `#3f5efb`, `#1a2a6c`, `#b21f1f`, `#fdbb2d`],
+            spread: 2,
             duration: 20000,
             direction: `alternate`,
             iterations: 2,
@@ -262,6 +259,16 @@ function App() {
             duration: 3000,
             direction: `alternate`,
             iterations: 2,
+          });
+
+          animateGradient({
+            element: divForGradientChange,
+            colors: [`#fc466b`, `#fdbb2d`],
+            spread: 4,
+            duration: 3000,
+            direction: `alternate`,
+            iterations: 2,
+            fill: `forwards`,
           });
 
           chainBackgroundColors({
