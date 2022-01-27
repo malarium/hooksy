@@ -114,9 +114,14 @@ const useAnimation = () => {
   };
 
   const animateGradient = (animateGradientData: IAnimateGradient) => {
+    const styleString =
+      animateGradientData.colors.reduce((acc, val): string => {
+        return (acc += `val,`);
+      }, `linear-gradient(to right,`) + `)`;
+    console.log(styleString);
     const animation = [
       {
-        transform: `backgroundPositionX(0%))`,
+        transform: `backgroundPositionX(0%)`,
       },
       {
         transform: `backgroundPositionX(${

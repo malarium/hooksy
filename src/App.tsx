@@ -31,8 +31,14 @@ function App() {
   const arraysDifference: number[] = useDifference(array1, array2);
   // const { x, y } = useCursorPosition();
   const { x: staticX, y: staticY } = useCursorStaticPosition();
-  const { move, resize, rotate, perspective, chainBackgroundColors } =
-    useAnimation();
+  const {
+    move,
+    resize,
+    rotate,
+    perspective,
+    chainBackgroundColors,
+    animateGradient,
+  } = useAnimation();
   const { getDimensions, getBoxModel } = useGetDimensions();
 
   // const animationTest = useColorShift(divToAnimate, `red`, `blue`, 1000);
@@ -227,6 +233,21 @@ function App() {
         }}
       >
         Put in perspective!
+      </button>
+      <button
+        onClick={() => {
+          animateGradient({
+            element: divForGradientChange,
+            colors: [`rgb(255, 0, 0)`, `rgb(0, 255, 0)`, `rgb(0, 0, 255)`],
+            spread: 4,
+            duration: 3000,
+            direction: `alternate`,
+            iterations: 2,
+            fill: `forwards`,
+          });
+        }}
+      >
+        Gradientify!
       </button>
       <button
         onClick={() => {
