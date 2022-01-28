@@ -1,4 +1,3 @@
-import React from "react";
 import { hooksyError } from "./helpers/consoleInfo";
 import {
   IAnimateGradient,

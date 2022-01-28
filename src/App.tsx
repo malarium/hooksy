@@ -1,5 +1,5 @@
 import React, { MutableRefObject } from "react";
-import { fancyLogInConsole, logInConsole } from "./lib/helpers/consoleInfo";
+import { hooksyInfo } from "./lib/helpers/consoleInfo";
 import useAnimation from "./lib/useAnimation";
 import useCursorStaticPosition from "./lib/useCursorStaticPosition";
 import useDifference from "./lib/useDifference";
@@ -49,12 +49,12 @@ function App() {
   const sampleArrayOfNumbersSorted = sortNumbers(sampleArrayOfNumbers);
 
   useOnMount(() => {
-    logInConsole("rendered");
-    logInConsole(sampleArrayOfStringsSorted);
-    logInConsole(sampleArrayOfNumbersSorted);
-    logInConsole(arraysDifference);
+    hooksyInfo("rendered");
+    hooksyInfo(sampleArrayOfStringsSorted);
+    hooksyInfo(sampleArrayOfNumbersSorted);
+    hooksyInfo(arraysDifference);
   });
-  useOnUnmount(() => logInConsole("unmounted"));
+  useOnUnmount(() => hooksyInfo("unmounted"));
 
   function getDivDimensions() {
     console.log(getDimensions(divToResize));
@@ -251,7 +251,7 @@ function App() {
       </button>
       <button
         onClick={() => {
-          fancyLogInConsole(`COMBO TIME!`);
+          hooksyInfo(`COMBO TIME!`);
           perspective({
             element: divForCombo,
             perspective: 190,
