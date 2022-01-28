@@ -28,19 +28,47 @@ interface IBaseAnimation {
   fill?: FillMode;
   easing?: EasingMode;
   iterations?: number;
+  offset?: number;
+  direction?:
+    | `normal`
+    | `reverse`
+    | `alternate`
+    | `alternate-reverse`
+    | `initial`
+    | `inherit`;
 }
-export interface Imove extends IBaseAnimation {
+export interface IMove extends IBaseAnimation {
   x: number;
   y: number;
   unit?: `px` | `%`;
 }
 
-export interface Iresize extends IBaseAnimation {
+export interface IResize extends IBaseAnimation {
   scale: number;
   axis?: `X` | `Y`;
 }
 
-export interface Irotate extends IBaseAnimation {
+export interface IRotate extends IBaseAnimation {
   turnDegree: number;
   unit?: `deg` | `turn` | `rad`;
+}
+
+export interface IPerspective extends IBaseAnimation {
+  perspective: number | `none`;
+  perspectiveAxisXTilt: number;
+  perspectiveAxisYTilt: number;
+  perspectiveAxisZTilt: number;
+  perspectiveAxisXTiltUnit?: `deg` | `turn` | `rad`;
+  perspectiveAxisYTiltUnit?: `deg` | `turn` | `rad`;
+  perspectiveAxisZTiltUnit?: `deg` | `turn` | `rad`;
+  unit?: `px` | `cm` | `px` | `em` | `rem` | `pt` | `vh` | `vw` | `pc` | `in`;
+}
+
+export interface IChainColors extends IBaseAnimation {
+  colors: { color: string; offset?: number }[];
+}
+
+export interface IAnimateGradient extends IBaseAnimation {
+  spread?: 1 | 2 | 3 | 4 | 5;
+  colors: string[];
 }

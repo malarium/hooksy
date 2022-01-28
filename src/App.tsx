@@ -6,7 +6,7 @@ import useDifference from "./lib/useDifference";
 import useGetDimensions from "./lib/useGetDimensions";
 import useOnMount from "./lib/useOnMount";
 import useOnUnmount from "./lib/useOnUnmount";
-import useSortAplhabetically from "./lib/useSortAplphabetically";
+import useSort from "./lib/useSort";
 
 function App() {
   const divToMove: MutableRefObject<any> = React.useRef();
@@ -26,6 +26,7 @@ function App() {
     "Yoda",
     "style",
   ];
+  const sampleArrayOfNumbers: number[] = [1, 11, 3, 12, 0.4, 0.03, 21, 2];
   const array1: number[] = [1, 2, 3, 4, 5, 6, 7];
   const array2: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
   const arraysDifference: number[] = useDifference(array1, array2);
@@ -40,15 +41,17 @@ function App() {
     animateGradient,
   } = useAnimation();
   const { getDimensions, getBoxModel } = useGetDimensions();
+  const { sortNumbers, sortAlphabetically } = useSort();
 
   // const animationTest = useColorShift(divToAnimate, `red`, `blue`, 1000);
 
-  const sampleArrayOfStringsSorted =
-    useSortAplhabetically(sampleArrayOfStrings);
+  const sampleArrayOfStringsSorted = sortAlphabetically(sampleArrayOfStrings);
+  const sampleArrayOfNumbersSorted = sortNumbers(sampleArrayOfNumbers);
 
   useOnMount(() => {
     logInConsole("rendered");
     logInConsole(sampleArrayOfStringsSorted);
+    logInConsole(sampleArrayOfNumbersSorted);
     logInConsole(arraysDifference);
   });
   useOnUnmount(() => logInConsole("unmounted"));
