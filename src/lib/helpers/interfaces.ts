@@ -105,4 +105,5 @@ export interface IChainColors extends IBaseAnimation {
 export interface IAnimateGradient extends IBaseAnimation {
   spread?: 1 | 2 | 3 | 4 | 5;
   colors: string[];
+  movementDirection?: "left" | "right";
 }

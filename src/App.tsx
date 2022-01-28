@@ -1,22 +1,17 @@
-import React, { MutableRefObject } from "react";
+import React, { MutableRefObject, useState } from "react";
 import "./App.scss";
-import { hooksyInfo } from "./lib/helpers/consoleInfo";
 import useAnimation from "./lib/useAnimation";
 import useCursorStaticPosition from "./lib/useCursorStaticPosition";
 import useDifference from "./lib/useDifference";
 import useGetDimensions from "./lib/useGetDimensions";
 import useOnMount from "./lib/useOnMount";
-import useOnUnmount from "./lib/useOnUnmount";
 import useSort from "./lib/useSort";
 
 function App() {
   const headerToTilt: MutableRefObject<any> = React.useRef();
-  const divToResize: MutableRefObject<any> = React.useRef();
-  const divToTurn: MutableRefObject<any> = React.useRef();
-  const divForPerspective: MutableRefObject<any> = React.useRef();
-  const divForCombo: MutableRefObject<any> = React.useRef();
-  const divToColor: MutableRefObject<any> = React.useRef();
-  const divForGradientChange: MutableRefObject<any> = React.useRef();
+  const generalInfo: MutableRefObject<any> = React.useRef();
+  const mainCointainer: MutableRefObject<any> = React.useRef();
+  const generalHooks: MutableRefObject<any> = React.useRef();
   const sampleArrayOfStrings: string[] = [
     "these",
     "strings",
@@ -45,6 +40,7 @@ function App() {
 
   const sampleArrayOfStringsSorted = sortAlphabetically(sampleArrayOfStrings);
   const sampleArrayOfNumbersSorted = sortNumbers(sampleArrayOfNumbers);
+  const [screenToDisplay, setScreenToDisplay] = useState(0);
 
   useOnMount(() => {
     headerToTilt.current.addEventListener("mouseover", () => {
@@ -80,23 +76,94 @@ function App() {
     // hooksyInfo(sampleArrayOfNumbersSorted);
     // hooksyInfo(arraysDifference);
   });
-  useOnUnmount(() => hooksyInfo("unmounted"));
 
-  function getDivDimensions() {
-    console.log(getDimensions(divToResize));
-    console.log(getBoxModel(divToResize));
-  }
+  const goToGeneralHooks = () => {
+    animateGradient({
+      element: mainCointainer,
+      colors: [`#00c6ff`, `#0072ff`, `#00d2ff`, `#3a7bd5`],
+      spread: 3,
+      duration: 500,
+      easing: `ease-in-out`,
+      iterations: 1,
+      fill: `forwards`,
+      movementDirection: "left",
+    });
+  };
+  const goToAnimationHooks = () => {
+    animateGradient({
+      element: mainCointainer,
+      colors: [`#00c6ff`, `#0072ff`, `#00d2ff`, `#0072ff`, `#00c6ff`],
+      spread: 3,
+      duration: 500,
+      easing: `ease-in-out`,
+      iterations: 1,
+      fill: `forwards`,
+      movementDirection: "right",
+    });
+  };
+  // useOnUnmount(() => hooksyInfo("unmounted"));
+
+  // function getDivDimensions() {
+  //   console.log(getDimensions(divToResize));
+  //   console.log(getBoxModel(divToResize));
+  // }
 
   return (
-    <div className="App">
+    <div className="App" ref={mainCointainer}>
       <header>
         <h1 ref={headerToTilt}>HOOKSY</h1>
         <hr />
-        <small>Animate your React components with ease!</small>
+        <small>Web Animation API for React</small>
       </header>
       <main>
-        <p>This library was created as open source project by DNA Technology</p>
+        <div ref={generalInfo}>
+          <p>
+            This library was created as open source project to make
+            <code>Web Animation API</code> easier and more pleasent to use with
+            React applications. It is customizable with methods working
+            out-of-the-box and fully supports TypeScript.
+          </p>
+          <h2>What's in it?</h2>
+          <p>
+            HOOKSY consists of two parts: general usage hooks, and animation
+            hooks. Even though it is mainly for animating stuff - some basic
+            usage hooks are also useful and there is no need to import
+            additional libraries for the basic funtionality.
+          </p>
+          <p>
+            Just install it with <code className="focus">npm i hooksy</code>
+            ...and you're good to go!
+          </p>
+          <div className="mainButtons">
+            <button className="button" onClick={goToGeneralHooks}>
+              &larr; General hooks
+            </button>
+            <button className="button" onClick={goToAnimationHooks}>
+              Animation hooks &rarr;
+            </button>
+          </div>
+        </div>
       </main>
+      <footer>
+        <small>
+          Developed by:
+          <a
+            href="https://www.linkedin.com/in/goreckimarcin/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            &nbsp;Marcin Górecki
+          </a>
+          /
+          <a
+            href="https://digitalnewagency.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            &nbsp;DNA Technology
+          </a>
+        </small>
+      </footer>
       {/* <button onClick={getDivDimensions}>CLICK</button>
       <p>{`Mouse position at click: X: ${staticX}, Y: ${staticY}`}</p>
       <div

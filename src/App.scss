@@ -2,13 +2,33 @@
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(to right, #00c6ff, #0072ff);
-  font-size: 16px;
+  font-size: 24px;
+  font-family: "Zen Kurenaido", sans-serif;
 }
 
 .App {
+  background: linear-gradient(to right, #00c6ff, #0072ff);
   display: flex;
   flex-flow: column;
+  width: 100%;
+  text-align: center;
+  .focus {
+    padding: 2px 5px;
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: white;
+    font-size: bigger;
+  }
+  .button {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 1.25em;
+    padding: 10px;
+    cursor: pointer;
+  }
   header {
     font-family: "Coda", cursive;
     padding: 10px;
@@ -17,12 +37,28 @@ body {
       text-align: center;
     }
     small {
-      font-family: "Zen Kurenaido", sans-serif;
       font-size: 1.5em;
     }
   }
-  body {
+  main {
     background: unset;
     margin: auto;
+    .mainButtons {
+      display: flex;
+      padding: 15vh 0 0;
+      justify-content: center;
+      .button {
+        margin: 0 2vw;
+      }
+    }
+  }
+  footer {
+    padding: 10vh 0 5vh;
+    width: 100%;
+    text-align: center;
+    a {
+      all: unset;
+      cursor: pointer;
+    }
   }
 }

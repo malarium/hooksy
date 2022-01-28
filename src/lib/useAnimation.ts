@@ -117,6 +117,11 @@ const useAnimation = () => {
   };
 
   const animateGradient = (animateGradientData: IAnimateGradient) => {
+    const position =
+      animateGradientData.movementDirection &&
+      animateGradientData.movementDirection === "right"
+        ? "-100%"
+        : "100%";
     const styleString =
       animateGradientData.colors.reduce((acc, val, i): string => {
         return (acc +=
@@ -131,7 +136,7 @@ const useAnimation = () => {
         backgroundPositionX: 0,
       },
       {
-        backgroundPositionX: `100%`,
+        backgroundPositionX: position,
       },
     ];
     const animationTiming = generateDefaultTimingOptions(animateGradientData);
