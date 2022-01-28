@@ -7,9 +7,9 @@ import {
   IResize,
   IRotate,
 } from "./helpers/interfaces";
-// TODO: Add 'combine' method that would chain animations with the same action (transform) - is that needed?
-// TODO: add offset for animations - in seconds
-// TODO: colour change should support gradients
+
+//TODO: introduce composite option to animations
+//TODO: introduce methods to play, pause and stop animation on demand.
 
 const useAnimation = () => {
   const generateDefaultTimingOptions = (
@@ -27,20 +27,18 @@ const useAnimation = () => {
       easing: data.easing || `linear`,
       iterations: data.iterations || 1,
       direction: data.direction || `normal`,
-      // composite: `add`,
       iterationComposite: `replace`,
     };
   };
+
   const move = (moveData: IMove) => {
+    const unit: string = moveData.unit || `%`;
     const animation = [
       {
-        transform: `translate(${moveData.x}${moveData.unit || `%`}, ${
-          moveData.y
-        }${moveData.unit || `%`})`,
+        transform: `translate(${moveData.x}${unit}, ${moveData.y}${unit})`,
       },
     ];
     const animationTiming = generateDefaultTimingOptions(moveData);
-    console.log(`Animation: `, animation);
     return moveData.element.current.animate(animation, animationTiming);
   };
 
@@ -54,6 +52,7 @@ const useAnimation = () => {
     const animationTiming = generateDefaultTimingOptions(resizeData);
     return resizeData.element.current.animate(animation, animationTiming);
   };
+
   const rotate = (rotateData: IRotate) => {
     const animation = [
       {
@@ -65,6 +64,7 @@ const useAnimation = () => {
     const animationTiming = generateDefaultTimingOptions(rotateData);
     return rotateData.element.current.animate(animation, animationTiming);
   };
+
   const perspective = (perspectiveData: IPerspective) => {
     const rotationXdata = `${perspectiveData.perspectiveAxisXTilt}${
       perspectiveData.perspectiveAxisXTiltUnit || `deg`
@@ -91,6 +91,7 @@ const useAnimation = () => {
       perspectiveTiming
     );
   };
+
   const chainBackgroundColors = (chainColorsData: IChainColors) => {
     const animation: { background: string; offset: number | null }[] = [];
     chainColorsData.colors.forEach((item) => {
@@ -119,7 +120,6 @@ const useAnimation = () => {
         return (acc +=
           i < animateGradientData.colors.length - 1 ? `${val},` : `${val}`);
       }, `linear-gradient(to right,`) + `)`;
-    console.log(styleString);
     animateGradientData.element.current.style.background = styleString;
     animateGradientData.element.current.style.backgroundSize = `${
       (animateGradientData.spread || 2) * 100

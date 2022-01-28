@@ -6,10 +6,10 @@ export const hooksyInfo = (data: any) => {
 export const hooksyWarning = (text: string) => {
   const css = `background-color: orange; color: #fff; font-weight: bold;`;
   console.log(`%c${"HOOKSY WARNING!"}`, css);
-  console.warn(text);
+  console.warn(`%c${text}`, css);
 };
 export const hooksyError = (text: string) => {
   const css = `background-color: red; color: #fff; font-weight: bold;`;
   console.log(`%c${"HOOKSY ERROR! "}`, css);
-  console.error(text);
+  console.error(`%c${text}`, css);
 };

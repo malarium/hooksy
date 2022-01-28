@@ -1,25 +1,13 @@
 import React from "react";
-// TODO: This should return methods:
-// 1. dimensions as in getBoundigClientRect
-// 2. measurements of content, padding, border and margin
-export interface rect {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-  top: number;
-  right: number;
-  left: number;
-  bottom: number;
-}
+import { BoxModelData, Rect } from "./helpers/interfaces";
 
 const useGetDimensions = () => {
-  const getDimensions = (element: React.MutableRefObject<any>): rect => {
+  const getDimensions = (element: React.MutableRefObject<any>): Rect => {
     const { x, y, width, height, top, right, bottom, left } =
       element.current.getBoundingClientRect();
     return { x, y, width, height, top, right, bottom, left };
   };
-  const getBoxModel = (element: React.MutableRefObject<any>) => {
+  const getBoxModel = (element: React.MutableRefObject<any>): BoxModelData => {
     const style: CSSStyleDeclaration = getComputedStyle(element.current);
     const margins = {
       top: parseInt(style.marginTop),

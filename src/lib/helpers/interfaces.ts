@@ -1,5 +1,38 @@
 declare type FillMode = "none" | "forwards" | "backwards" | "both" | "auto";
 declare type IterationCompositeOperation = "replace" | "accumulate";
+export interface Rect {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  top: number;
+  right: number;
+  left: number;
+  bottom: number;
+}
+export interface BoxModelData {
+  margins: {
+    top: number;
+    right: number;
+    bottom: number;
+    left: number;
+  };
+  border: {
+    top: number;
+    right: number;
+    bottom: number;
+    left: number;
+    radius: number;
+  };
+  padding: {
+    top: number;
+    right: number;
+    bottom: number;
+    left: number;
+  };
+  contentHeight: number;
+  contentWidth: number;
+}
 declare type EasingMode =
   | "linear"
   | "ease-in"
