@@ -1,13 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 
 const useCursorStaticPosition = () => {
-  // const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const mousePosition = useRef({ x: 0, y: 0 });
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const updateMousePosition = (ev: { clientX: number; clientY: number }) => {
     console.log(`clicked`);
-    // setMousePosition({ x: ev.clientX, y: ev.clientY });
-    mousePosition.current = { x: ev.clientX, y: ev.clientY };
+    setMousePosition({ x: ev.clientX, y: ev.clientY });
   };
 
   useEffect(() => {
@@ -16,7 +14,7 @@ const useCursorStaticPosition = () => {
     return () => window.removeEventListener("click", updateMousePosition);
   }, []);
 
-  return mousePosition.current;
+  return mousePosition;
 };
 
 export default useCursorStaticPosition;

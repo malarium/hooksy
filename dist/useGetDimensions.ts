@@ -1,7 +1,4 @@
 import React from "react";
-// TODO: This should return methods:
-// 1. dimensions as in getBoundigClientRect
-// 2. measurements of content, padding, border and margin
 export interface rect {
   x: number;
   y: number;

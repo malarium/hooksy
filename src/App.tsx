@@ -30,7 +30,6 @@ function App() {
   const array1: number[] = [1, 2, 3, 4, 5, 6, 7];
   const array2: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
   const arraysDifference: number[] = useDifference(array1, array2);
-  // const { x, y } = useCursorPosition();
   const { x: staticX, y: staticY } = useCursorStaticPosition();
   const {
     move,
@@ -42,8 +41,6 @@ function App() {
   } = useAnimation();
   const { getDimensions, getBoxModel } = useGetDimensions();
   const { sortNumbers, sortAlphabetically } = useSort();
-
-  // const animationTest = useColorShift(divToAnimate, `red`, `blue`, 1000);
 
   const sampleArrayOfStringsSorted = sortAlphabetically(sampleArrayOfStrings);
   const sampleArrayOfNumbersSorted = sortNumbers(sampleArrayOfNumbers);

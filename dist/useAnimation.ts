@@ -1,4 +1,3 @@
-import React from "react";
 import { hooksyError } from "./helpers/consoleInfo";
 import {
   IAnimateGradient,
@@ -28,7 +27,6 @@ const useAnimation = () => {
       easing: data.easing || `linear`,
       iterations: data.iterations || 1,
       direction: data.direction || `normal`,
-      // composite: `add`,
       iterationComposite: `replace`,
     };
   };
