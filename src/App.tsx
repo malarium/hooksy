@@ -1,4 +1,5 @@
 import React, { MutableRefObject } from "react";
+import "./App.scss";
 import { hooksyInfo } from "./lib/helpers/consoleInfo";
 import useAnimation from "./lib/useAnimation";
 import useCursorStaticPosition from "./lib/useCursorStaticPosition";
@@ -9,7 +10,7 @@ import useOnUnmount from "./lib/useOnUnmount";
 import useSort from "./lib/useSort";
 
 function App() {
-  const divToMove: MutableRefObject<any> = React.useRef();
+  const headerToTilt: MutableRefObject<any> = React.useRef();
   const divToResize: MutableRefObject<any> = React.useRef();
   const divToTurn: MutableRefObject<any> = React.useRef();
   const divForPerspective: MutableRefObject<any> = React.useRef();
@@ -46,10 +47,38 @@ function App() {
   const sampleArrayOfNumbersSorted = sortNumbers(sampleArrayOfNumbers);
 
   useOnMount(() => {
-    hooksyInfo("rendered");
-    hooksyInfo(sampleArrayOfStringsSorted);
-    hooksyInfo(sampleArrayOfNumbersSorted);
-    hooksyInfo(arraysDifference);
+    headerToTilt.current.addEventListener("mouseover", () => {
+      perspective({
+        element: headerToTilt,
+        perspective: 0,
+        origin: `30% 50%`,
+        easing: `ease-in-out`,
+        unit: "px",
+        perspectiveAxisXTilt: 0,
+        perspectiveAxisYTilt: 0,
+        perspectiveAxisZTilt: 170,
+        duration: 1500,
+        direction: `alternate`,
+        iterations: 2,
+      });
+    });
+    // perspective({
+    //   element: headerToTilt,
+    //   perspective: 0,
+    //   origin: `30% 50%`,
+    //   easing: `ease-in-out`,
+    //   unit: "px",
+    //   perspectiveAxisXTilt: 0,
+    //   perspectiveAxisYTilt: 0,
+    //   perspectiveAxisZTilt: 170,
+    //   duration: 1500,
+    //   direction: `alternate`,
+    //   iterations: Infinity,
+    // });
+    // hooksyInfo("rendered");
+    // hooksyInfo(sampleArrayOfStringsSorted);
+    // hooksyInfo(sampleArrayOfNumbersSorted);
+    // hooksyInfo(arraysDifference);
   });
   useOnUnmount(() => hooksyInfo("unmounted"));
 
@@ -60,8 +89,15 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={getDivDimensions}>CLICK</button>
-      {/* <p>{`Mouse position: X: ${x}, Y: ${y}`}</p> */}
+      <header>
+        <h1 ref={headerToTilt}>HOOKSY</h1>
+        <hr />
+        <small>Animate your React components with ease!</small>
+      </header>
+      <main>
+        <p>This library was created as open source project by DNA Technology</p>
+      </main>
+      {/* <button onClick={getDivDimensions}>CLICK</button>
       <p>{`Mouse position at click: X: ${staticX}, Y: ${staticY}`}</p>
       <div
         style={{
@@ -349,7 +385,7 @@ function App() {
         }}
       >
         Run a combo!
-      </button>
+      </button> */}
     </div>
   );
 }

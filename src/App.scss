@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Coda:wght@400;800&family=Zen+Kurenaido&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  font-size: 16px;
+}
+
+.App {
+  display: flex;
+  flex-flow: column;
+  header {
+    font-family: "Coda", cursive;
+    padding: 10px;
+    margin: auto;
+    h1 {
+      text-align: center;
+    }
+    small {
+      font-family: "Zen Kurenaido", sans-serif;
+      font-size: 1.5em;
+    }
+  }
+  body {
+    background: unset;
+    margin: auto;
+  }
+}

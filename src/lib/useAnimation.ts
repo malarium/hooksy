@@ -66,6 +66,8 @@ const useAnimation = () => {
   };
 
   const perspective = (perspectiveData: IPerspective) => {
+    perspectiveData.element.current.style.transformOrigin =
+      perspectiveData.origin || `center`;
     const rotationXdata = `${perspectiveData.perspectiveAxisXTilt}${
       perspectiveData.perspectiveAxisXTiltUnit || `deg`
     }`;

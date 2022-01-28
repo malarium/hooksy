@@ -79,7 +79,7 @@ const useAnimation = () => {
     }${perspectiveData.unit || `px`}`;
     const animation = [
       {
-        transform: `perspective(${perspectiveData.perspective}${
+        transform: `transformOrigin perspective(${perspectiveData.perspective}${
           perspectiveData.unit || `px`
         }) rotateX(${rotationXdata}) rotateY(${rotationYdata}) rotateZ(${rotationZdata})`,
       },
