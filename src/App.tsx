@@ -1,5 +1,6 @@
 import React, { MutableRefObject } from "react";
 import "./App.scss";
+import { hooksyInfo } from "./lib/helpers/consoleInfo";
 import useAnimation from "./lib/useAnimation";
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
 
   const { perspective } = useAnimation();
   React.useEffect(() => {
+    hooksyInfo("Rendered!");
     const currentAnimation = perspective({
       element: headerToTilt,
       perspective: 0,
@@ -56,6 +58,14 @@ function App() {
           Just install it with <code className="focus">npm i hooksy</code>
           &nbsp;...and you're good to go!
         </p>
+        <hr />
+        <p>
+          For detailed DOCS and examples of general and animation hooks{" "}
+          <a href="https://github.com/malarium/hooksy">check here.</a>
+        </p>
+        <h2>And here are some examples of available animation methods:</h2>
+
+        <span>* * *</span>
       </main>
       <footer>
         <small>

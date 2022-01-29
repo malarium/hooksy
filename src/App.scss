@@ -4,6 +4,7 @@ body {
   padding: 0;
   font-size: 24px;
   font-family: "Zen Kurenaido", sans-serif;
+  scroll-behavior: smooth;
 }
 
 .App {
@@ -47,11 +48,20 @@ body {
     padding: 0 5vw;
     .mainButtons {
       display: flex;
-      padding: 15vh 0 0;
       justify-content: center;
       .button {
+        all: unset;
         margin: 0 2vw;
+        cursor: pointer;
+        background-color: black;
+        color: white;
+        padding: 10px 30px;
+        border: 1px solid black;
+        border-radius: 5px;
       }
+    }
+    p.methodName {
+      text-decoration: underline;
     }
   }
   footer {

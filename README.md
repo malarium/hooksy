@@ -57,7 +57,7 @@ AVAILABLE METHODS:
 
 ## **getDimensions**
 
-This is the equivalnet of `getBoundingClientRect` method. It accepts a ref as parameter and returns:
+This is the equivalent of `getBoundingClientRect` method. It accepts a ref as parameter and returns:
 
 ```
 x: number; // horizontal position
