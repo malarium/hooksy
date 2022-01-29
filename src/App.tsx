@@ -72,7 +72,7 @@ function App() {
         <span>* * *</span>
         <h2>move()</h2>
         <p>
-          Accepted parameters:{" "}
+          Accepted specific parameters:{" "}
           {JSON.stringify({
             x: 10,
             y: 10,
@@ -90,7 +90,7 @@ function App() {
                 y: -150,
                 direction: `alternate`,
                 duration: 600,
-                easing: `ease-out`,
+                easing: `cubic-bezier(.19,.55,.48,1.06)`,
                 fill: `forwards`,
                 unit: `px`,
                 iterations: 4,
@@ -101,7 +101,7 @@ function App() {
                 y: -100,
                 direction: `alternate`,
                 duration: 500,
-                easing: `ease-out`,
+                easing: `cubic-bezier(.32,.46,.48,1.06)`,
                 fill: `forwards`,
                 unit: `px`,
                 iterations: 6,
@@ -111,8 +111,8 @@ function App() {
                 x: 0,
                 y: window.innerHeight - toBottom + 10,
                 direction: `alternate`,
-                duration: 500,
-                easing: `cubic-bezier(.2, .5, .36, 1.05)`,
+                duration: 400,
+                easing: `cubic-bezier(.55,-0.43,.96,.58)`,
                 fill: `forwards`,
                 unit: `px`,
                 iterations: 6,
