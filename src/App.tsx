@@ -2,6 +2,7 @@ import React, { MutableRefObject } from "react";
 import "./App.scss";
 import { hooksyInfo } from "./lib/helpers/consoleInfo";
 import useAnimation from "./lib/useAnimation";
+import useGetDimensions from "./lib/useGetDimensions";
 
 function App() {
   const mainCointainer: MutableRefObject<any> = React.useRef();
@@ -11,6 +12,7 @@ function App() {
   const divToMove3: MutableRefObject<any> = React.useRef();
 
   const { perspective, move } = useAnimation();
+  const { getDimensions } = useGetDimensions();
   React.useEffect(() => {
     hooksyInfo("Rendered!");
     const currentAnimation = perspective({
@@ -81,6 +83,7 @@ function App() {
           <button
             className="button"
             onClick={() => {
+              const toBottom = getDimensions(divToMove3).bottom;
               move({
                 element: divToMove1,
                 x: 0,
@@ -105,14 +108,14 @@ function App() {
               });
               move({
                 element: divToMove3,
-                x: 350,
-                y: 0,
+                x: 0,
+                y: window.innerHeight - toBottom + 10,
                 direction: `alternate`,
-                duration: 1300,
+                duration: 500,
                 easing: `ease-in`,
                 fill: `forwards`,
                 unit: `px`,
-                iterations: 2,
+                iterations: 6,
               });
             }}
           >
