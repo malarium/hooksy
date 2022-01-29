@@ -67,18 +67,14 @@ function App() {
         <p>
           For detailed DOCS and examples of general and animation hooks{" "}
           <a href="https://github.com/malarium/hooksy">check here.</a>
+          And for now all you need to know is that each of the methods below
+          accepts some specific parameters and general parameters that apply to
+          each of them.
         </p>
+
         <h2>And here is a little overview of animations available:</h2>
-        <span>* * *</span>
+
         <h2>move()</h2>
-        <p>
-          Accepted specific parameters:{" "}
-          {JSON.stringify({
-            x: 10,
-            y: 10,
-            unit: `px | %`,
-          })}
-        </p>
         <div className="animationExample">
           <button
             className="button"
@@ -129,6 +125,54 @@ function App() {
           </div>
           <div className="divToMove" ref={divToMove3}>
             &#9786;
+          </div>
+        </div>
+
+        <h2>resize()</h2>
+        <div className="animationExample">
+          <button
+            className="button"
+            onClick={() => {
+              const toBottom = getDimensions(divToMove3).bottom;
+              move({
+                element: divToMove1,
+                x: 0,
+                y: -150,
+                direction: `alternate`,
+                duration: 600,
+                easing: `cubic-bezier(.19,.55,.48,1.06)`,
+                fill: `forwards`,
+                unit: `px`,
+                iterations: 4,
+              });
+              move({
+                element: divToMove2,
+                x: 10,
+                y: -100,
+                direction: `alternate`,
+                duration: 500,
+                easing: `cubic-bezier(.32,.46,.48,1.06)`,
+                fill: `forwards`,
+                unit: `px`,
+                iterations: 6,
+              });
+              move({
+                element: divToMove3,
+                x: 0,
+                y: window.innerHeight - toBottom + 10,
+                direction: `alternate`,
+                duration: 400,
+                easing: `cubic-bezier(.55,-0.43,.96,.58)`,
+                fill: `forwards`,
+                unit: `px`,
+                iterations: 6,
+              });
+            }}
+          >
+            Look at me!
+          </button>
+          <div className="amuseAcat">
+            <div className="amuseAcat-eyes"></div>
           </div>
         </div>
       </main>
