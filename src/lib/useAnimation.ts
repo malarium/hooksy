@@ -27,7 +27,6 @@ const useAnimation = () => {
       easing: data.easing || `linear`,
       iterations: data.iterations || 1,
       direction: data.direction || `normal`,
-      iterationComposite: `replace`,
     };
   };
 
@@ -145,7 +144,6 @@ const useAnimation = () => {
       animationTiming
     );
   };
-
   return {
     move,
     resize,

@@ -4,8 +4,9 @@ import useAnimation from "./lib/useAnimation";
 import useCursorStaticPosition from "./lib/useCursorStaticPosition";
 import useDifference from "./lib/useDifference";
 import useGetDimensions from "./lib/useGetDimensions";
-import useOnMount from "./lib/useOnMount";
 import useSort from "./lib/useSort";
+import AnimationHooksScreen from "./screens/animationHooksScreen";
+import GeneralHooksScreen from "./screens/generalHooksScreen";
 
 function App() {
   const headerToTilt: MutableRefObject<any> = React.useRef();
@@ -42,39 +43,24 @@ function App() {
   const sampleArrayOfNumbersSorted = sortNumbers(sampleArrayOfNumbers);
   const [screenToDisplay, setScreenToDisplay] = useState(0);
 
-  useOnMount(() => {
-    headerToTilt.current.addEventListener("mouseover", () => {
-      perspective({
-        element: headerToTilt,
-        perspective: 0,
-        origin: `30% 50%`,
-        easing: `ease-in-out`,
-        unit: "px",
-        perspectiveAxisXTilt: 0,
-        perspectiveAxisYTilt: 0,
-        perspectiveAxisZTilt: 170,
-        duration: 1500,
-        direction: `alternate`,
-        iterations: 2,
-      });
+  React.useEffect(() => {
+    const currentAnimation = perspective({
+      element: headerToTilt,
+      perspective: 0,
+      origin: `90% 5%`,
+      easing: `ease-in-out`,
+      unit: "px",
+      perspectiveAxisXTilt: 0,
+      perspectiveAxisYTilt: 0,
+      perspectiveAxisZTilt: -50,
+      duration: 2050,
+      direction: `alternate`,
+      iterations: Infinity,
     });
-    // perspective({
-    //   element: headerToTilt,
-    //   perspective: 0,
-    //   origin: `30% 50%`,
-    //   easing: `ease-in-out`,
-    //   unit: "px",
-    //   perspectiveAxisXTilt: 0,
-    //   perspectiveAxisYTilt: 0,
-    //   perspectiveAxisZTilt: 170,
-    //   duration: 1500,
-    //   direction: `alternate`,
-    //   iterations: Infinity,
-    // });
-    // hooksyInfo("rendered");
-    // hooksyInfo(sampleArrayOfStringsSorted);
-    // hooksyInfo(sampleArrayOfNumbersSorted);
-    // hooksyInfo(arraysDifference);
+
+    return () => {
+      currentAnimation.cancel();
+    };
   });
 
   const goToGeneralHooks = () => {
@@ -88,6 +74,7 @@ function App() {
       fill: `forwards`,
       movementDirection: "left",
     });
+    setScreenToDisplay(1);
   };
   const goToAnimationHooks = () => {
     animateGradient({
@@ -100,49 +87,55 @@ function App() {
       fill: `forwards`,
       movementDirection: "right",
     });
+    setScreenToDisplay(2);
   };
-  // useOnUnmount(() => hooksyInfo("unmounted"));
-
-  // function getDivDimensions() {
-  //   console.log(getDimensions(divToResize));
-  //   console.log(getBoxModel(divToResize));
-  // }
 
   return (
     <div className="App" ref={mainCointainer}>
       <header>
-        <h1 ref={headerToTilt}>HOOKSY</h1>
+        <h1>
+          HOOKS
+          <span style={{ display: "inline-block" }} ref={headerToTilt}>
+            Y
+          </span>
+        </h1>
         <hr />
         <small>Web Animation API for React</small>
       </header>
       <main>
-        <div ref={generalInfo}>
-          <p>
-            This library was created as open source project to make
-            <code>Web Animation API</code> easier and more pleasent to use with
-            React applications. It is customizable with methods working
-            out-of-the-box and fully supports TypeScript.
-          </p>
-          <h2>What's in it?</h2>
-          <p>
-            HOOKSY consists of two parts: general usage hooks, and animation
-            hooks. Even though it is mainly for animating stuff - some basic
-            usage hooks are also useful and there is no need to import
-            additional libraries for the basic funtionality.
-          </p>
-          <p>
-            Just install it with <code className="focus">npm i hooksy</code>
-            ...and you're good to go!
-          </p>
-          <div className="mainButtons">
-            <button className="button" onClick={goToGeneralHooks}>
-              &larr; General hooks
-            </button>
-            <button className="button" onClick={goToAnimationHooks}>
-              Animation hooks &rarr;
-            </button>
+        {screenToDisplay === 1 ? (
+          <GeneralHooksScreen />
+        ) : screenToDisplay === 2 ? (
+          <AnimationHooksScreen />
+        ) : (
+          <div ref={generalInfo}>
+            <p>
+              This library was created as open source project to make
+              <code> Web Animation API</code> easier and more pleasent to use
+              with React applications. It is customizable with methods working
+              out-of-the-box and fully supports TypeScript.
+            </p>
+            <h2>What's in it?</h2>
+            <p>
+              HOOKSY consists of two parts: general usage hooks, and animation
+              hooks. Even though it is mainly for animating stuff - some basic
+              usage hooks are also useful and there is no need to import
+              additional libraries for the basic funtionality.
+            </p>
+            <p>
+              Just install it with <code className="focus">npm i hooksy</code>
+              &nbsp;...and you're good to go!
+            </p>
+            <div className="mainButtons">
+              <button className="button" onClick={goToGeneralHooks}>
+                &larr; General hooks
+              </button>
+              <button className="button" onClick={goToAnimationHooks}>
+                Animation hooks &rarr;
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </main>
       <footer>
         <small>

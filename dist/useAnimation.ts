@@ -65,6 +65,7 @@ const useAnimation = () => {
     return rotateData.element.current.animate(animation, animationTiming);
   };
   const perspective = (perspectiveData: IPerspective) => {
+    console.log("test");
     const rotationXdata = `${perspectiveData.perspectiveAxisXTilt}${
       perspectiveData.perspectiveAxisXTiltUnit || `deg`
     }`;
@@ -85,6 +86,7 @@ const useAnimation = () => {
       },
     ];
     const perspectiveTiming = generateDefaultTimingOptions(perspectiveData);
+    console.log(animation, perspectiveTiming);
     return perspectiveData.element.current.animate(
       animation,
       perspectiveTiming

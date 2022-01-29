@@ -1,6 +1,11 @@
 import React from "react";
 
-const generalHooksScreen = () => {
-  return <div>general hooks!</div>;
+const GeneralHooksScreen = (props: any) => {
+  return (
+    <>
+      <div>GENERAL!</div>
+      <button onClick={props.changeScreen(0)}>BACK</button>
+    </>
+  );
 };
-export default generalHooksScreen;
+export default GeneralHooksScreen;
