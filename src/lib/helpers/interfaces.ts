@@ -33,6 +33,8 @@ export interface BoxModelData {
   contentHeight: number;
   contentWidth: number;
 }
+declare type CubicBezierPattern =
+  `cubic-bezier(${number},${number},${number},${number})`;
 declare type EasingMode =
   | "linear"
   | "ease-in"
@@ -40,7 +42,8 @@ declare type EasingMode =
   | "ease-in-out"
   | "linear"
   | "step-start"
-  | "step-end";
+  | "step-end"
+  | CubicBezierPattern;
 declare type PlaybackDirection =
   | "normal"
   | "reverse"

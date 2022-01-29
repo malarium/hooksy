@@ -112,7 +112,7 @@ function App() {
                 y: window.innerHeight - toBottom + 10,
                 direction: `alternate`,
                 duration: 500,
-                easing: `ease-in`,
+                easing: `cubic-bezier(.2, .5, .36, 1.05)`,
                 fill: `forwards`,
                 unit: `px`,
                 iterations: 6,
