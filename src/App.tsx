@@ -6,8 +6,11 @@ import useAnimation from "./lib/useAnimation";
 function App() {
   const mainCointainer: MutableRefObject<any> = React.useRef();
   const headerToTilt: MutableRefObject<any> = React.useRef();
+  const divToMove1: MutableRefObject<any> = React.useRef();
+  const divToMove2: MutableRefObject<any> = React.useRef();
+  const divToMove3: MutableRefObject<any> = React.useRef();
 
-  const { perspective } = useAnimation();
+  const { perspective, move } = useAnimation();
   React.useEffect(() => {
     hooksyInfo("Rendered!");
     const currentAnimation = perspective({
@@ -63,9 +66,68 @@ function App() {
           For detailed DOCS and examples of general and animation hooks{" "}
           <a href="https://github.com/malarium/hooksy">check here.</a>
         </p>
-        <h2>And here are some examples of available animation methods:</h2>
-
+        <h2>And here is a little overview of animations available:</h2>
         <span>* * *</span>
+        <h2>move()</h2>
+        <p>
+          Accepted parameters:{" "}
+          {JSON.stringify({
+            x: 10,
+            y: 10,
+            unit: `px | %`,
+          })}
+        </p>
+        <div className="animationExample">
+          <button
+            className="button"
+            onClick={() => {
+              move({
+                element: divToMove1,
+                x: 0,
+                y: -150,
+                direction: `alternate`,
+                duration: 600,
+                easing: `ease-out`,
+                fill: `forwards`,
+                unit: `px`,
+                iterations: 4,
+              });
+              move({
+                element: divToMove2,
+                x: 10,
+                y: -100,
+                direction: `alternate`,
+                duration: 500,
+                easing: `ease-out`,
+                fill: `forwards`,
+                unit: `px`,
+                iterations: 6,
+              });
+              move({
+                element: divToMove3,
+                x: 350,
+                y: 0,
+                direction: `alternate`,
+                duration: 1300,
+                easing: `ease-in`,
+                fill: `forwards`,
+                unit: `px`,
+                iterations: 2,
+              });
+            }}
+          >
+            Move us!
+          </button>
+          <div className="divToMove" ref={divToMove1}>
+            &#9786;
+          </div>
+          <div className="divToMove" ref={divToMove2}>
+            &#9786;
+          </div>
+          <div className="divToMove" ref={divToMove3}>
+            &#9786;
+          </div>
+        </div>
       </main>
       <footer>
         <small>

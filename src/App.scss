@@ -27,7 +27,7 @@ body {
     border: 1px solid black;
     border-radius: 5px;
     font-size: 1.25em;
-    padding: 10px;
+    padding: 0 10px;
     cursor: pointer;
   }
   header {
@@ -49,19 +49,21 @@ body {
     .mainButtons {
       display: flex;
       justify-content: center;
-      .button {
-        all: unset;
-        margin: 0 2vw;
-        cursor: pointer;
-        background-color: black;
-        color: white;
-        padding: 10px 30px;
-        border: 1px solid black;
-        border-radius: 5px;
-      }
     }
-    p.methodName {
-      text-decoration: underline;
+    .animationExample {
+      display: flex;
+      width: 90vw;
+      margin: auto;
+      justify-content: center;
+      line-height: 1;
+      .divToMove {
+        width: 100px;
+        height: 100px;
+        font-size: 100px;
+        color: rgb(49, 23, 23);
+        font-weight: bold;
+        margin: 0 10px;
+      }
     }
   }
   footer {
