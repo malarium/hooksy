@@ -322,8 +322,8 @@ This method enables gradual change of gradient background color in an element.
 ACCEPTED OPTIONS:
 
 ```
-  spread?: number; // (Optional, fallback to 2) Accepts only numbers 1-5 - it defines the spread of colours. Spread of 1 indicates that all the defined colours will be visible all at once. Spread 5 indicates that gradient will be spread across elemen'ts width x 5 whoch will result in softer transition. The limitation of spread results from RAM savings (for FullHD screens this would generate 9600px gradient background).
-  colors: string[];
+  spread?: number; // (Optional, fallback to 2) Accepts only numbers 1-5 - it defines the spread of colours. Spread of 1 indicates that the defined colours will be visible all at once, so no animation can be played. Spread 5 indicates that gradient will be spread across element's width x 5 which will result in softer transition. The limitation of spread results from RAM savings (for FullHD screens this would generate 9600px gradient background if applied for full screen width. For 4K - it would be 19200px which may already be a lot for some machines - hence the limitation).
+  colors: string[]; // Example: [`#fc466b`, `#3f5efb`, `#1a2a6c`, `#b21f1f`, `#fdbb2d`]. All formats accepted.
   movementDirection?: "left" | "right";
 ```
 
