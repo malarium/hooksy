@@ -57,20 +57,22 @@ AVAILABLE METHODS:
 
 ## **getDimensions**
 
-This is the equivalent of `getBoundingClientRect` method. It accepts a ref as parameter and returns:
+This is the equivalent of `getBoundingClientRect` method supplemented with two additional results. It accepts a ref as parameter and returns:
 
 ```
-x: number; // horizontal position
-y: number; // vertical position
+x: number; // distance between left rim of element and left viewport rim
+y: number; // distance between top rim of element and top viewport rim
 width: number; // element's width
 height: number; // element's height
+top: same as y
+right: distance between right rim of element and left viewport rim
+left: same as x
+bottom: distance between bottom rim of element and top viewport rim
 
-//And element's shift from screen borders:
+// Additional results:
 
-top: number;
-right: number;
-left: number;
-bottom: number;
+absoluteRight: number; // distance between right rim of element and right viewport rim
+absoluteBottom: number; // distance between bottom rim of element and bottom viewport rim
 ```
 
 EXAMPLE:
@@ -114,7 +116,11 @@ This method also accepts a fer and provides data on element's measurements. It r
 }
 ```
 
-## `useSortAlphabetically`
+## `useSort`
+
+- This hook provides two methods for sorting either numbers or strings:
+
+## **sortAlphabetically**
 
 - Accepts an array of strings and returns a new array of these strings sorted A-Z.
 
@@ -135,6 +141,10 @@ const sampleArrayOfStrings: string[] = [
   const sampleArrayOfStringsSorted =
     useSortAplhabetically(sampleArrayOfStrings); // returns ['alphabetically', 'be', 'should', 'sorted', 'strings', 'style', 'these', 'Yoda']
 ```
+
+## **sortNumbers**
+
+- Accepts an array of numbers and returns then in ascending order. NaN and Infinity are not accepted.
 
 ## `useDifference`
 
@@ -193,7 +203,7 @@ AVAILABLE METHODS:
 
 ## **move**
 
-Animates the element on X/Y axis. Values for X and Y represent percents NOT PIXELS!
+Animates the element on X/Y axis. Values for X and Y represent percent or pixels with percent being default.
 
 EXAMPLE:
 
@@ -206,6 +216,7 @@ const { move } = useAnimation();
             element: divToAnimate,
             x: 20,
             y: 20,
+            unit: 'px',
             duration: 1500,
             fill: `both`,
           });
@@ -228,6 +239,7 @@ ACCEPTED OPTIONS:
   fill: FillMode; // (optional, fallback to 'none'); 'none', 'forwards', 'backwards' and 'both' available
   easing: EasingMode; // (optional, fallback to 'linear'); "linear", "ease-in", "ease-out", "ease-in-out", "linear", "step-start" and "step-end" available
   iterations: number; // (optional, fallback to 1); use "Infinite" for continual animation.
+  offset: number; // (optional, fallback to 0); a number value that delays sigle change. WARNING! 'offset' must be a number between 0 and 1 where 0 = 0% of animation time and 1 = 100% of animation time. To delay animation which lasts 5 seconds for 1 second 'offset' should be set to 0.2 as 5s x 0.2 = 1s.
   direction: string; // (optional, fallback to "normal"); "normal", "reverse", "alternate", "alternate-reverse", "initial" and "inherit" available
 }
 ```
@@ -278,9 +290,10 @@ ACCEPTED OPTIONS:
   perspectiveAxisXTilt: number; // Rotation is necessary for perspective to appear. This specifies rotataion on X axis.
   perspectiveAxisYTilt: number; // Specifies rotation on Y axis.
   perspectiveAxisZTilt: number; // Specifies rotation on Z axis.
-  perspectiveAxisXTiltUnit?: (Optional, fallback to ); `deg` | `turn` | `rad`;
-  perspectiveAxisYTiltUnit?: `deg` | `turn` | `rad`;
-  perspectiveAxisZTiltUnit?: `deg` | `turn` | `rad`;
+  perspectiveAxisXTiltUnit?: (Optional, fallback to 'rad'); `deg` | `turn` | `rad`;
+  perspectiveAxisYTiltUnit?: (Optional, fallback to 'rad'); `deg` | `turn` | `rad`;
+  perspectiveAxisZTiltUnit?: (Optional, fallback to 'rad'); `deg` | `turn` | `rad`;
+  origin?: string;  (Optional, fallback to 'center'); accepts keywords: 'left', 'right', 'center', 'top' and 'bottom' as well as stringified numbers.
 ```
 
 ## **chainBackgroundColors**
@@ -290,7 +303,7 @@ Chains a sequence of colors shift.
 ACCEPTED OPTIONS:
 
 ```
-// An array of objects. Each object must have a 'color' string value and optional 'offset' - a number value that delays sigle change. WARNING! 'offset' must be a number between 0 and 1 where 0 = 0% of animation time and 1 = 100% of animation time. To delay animation which lasts 5 seconts for 1 second 'offset' should be set to 0.2 as 5s x 0.2 = 1s.
+// An array of objects. Each object must have a 'color' string value and optional 'offset'. Warning! In this case 'offset' may be passed as part of object parameter as each color might have it's own offset. General offset setting still applies to the animation as a whole.
 colors: [
           { color: `violet`, offset: 0.3 },
           { color: `indigo` },
@@ -300,6 +313,18 @@ colors: [
           { color: `orange` },
           { color: `red` },
         ]
+```
+
+## **animateGradient**
+
+This method enables gradual change of gradient background color in an element.
+
+ACCEPTED OPTIONS:
+
+```
+  spread?: number; // (Optional, fallback to 2) Accepts only numbers 1-5 - it defines the spread of colours. Spread of 1 indicates that all the defined colours will be visible all at once. Spread 5 indicates that gradient will be spread across elemen'ts width x 5 whoch will result in softer transition. The limitation of spread results from RAM savings (for FullHD screens this would generate 9600px gradient background).
+  colors: string[];
+  movementDirection?: "left" | "right";
 ```
 
 ## This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
