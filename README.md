@@ -303,7 +303,10 @@ Chains a sequence of colors shift.
 ACCEPTED OPTIONS:
 
 ```
-// An array of objects. Each object must have a 'color' string value and optional 'offset'. Warning! In this case 'offset' may be passed as part of object parameter as each color might have it's own offset. General offset setting still applies to the animation as a whole.
+// An array of objects. Each object must have a 'color' string value and optional 'offset'.
+Warning! In this case 'offset' may be passed as part of object parameter as each color might
+have it's own offset. General offset setting still applies to the animation as a whole.
+
 colors: [
           { color: `violet`, offset: 0.3 },
           { color: `indigo` },
@@ -322,8 +325,15 @@ This method enables gradual change of gradient background color in an element.
 ACCEPTED OPTIONS:
 
 ```
-  spread?: number; // (Optional, fallback to 2) Accepts only numbers 1-5 - it defines the spread of colours. Spread of 1 indicates that the defined colours will be visible all at once, so no animation can be played. Spread 5 indicates that gradient will be spread across element's width x 5 which will result in softer transition. The limitation of spread results from RAM savings (for FullHD screens this would generate 9600px gradient background if applied for full screen width. For 4K - it would be 19200px which may already be a lot for some machines - hence the limitation).
+  spread?: number; // (Optional, fallback to 2) Accepts only numbers 1-5 - it defines the spread of colours.
+  Spread of 1 indicates that the defined colours will be visible all at once, so no animation can be played.
+  Spread 5 indicates that gradient will be spread across element's width x 5 which will result
+  in softer transition. The limitation of spread results from RAM savings (for FullHD screens this
+  would generate 9600px gradient background if applied for full screen width. For 4K - it would be 19200px
+  which may already be a lot for some machines - hence the limitation).
+
   colors: string[]; // Example: [`#fc466b`, `#3f5efb`, `#1a2a6c`, `#b21f1f`, `#fdbb2d`]. All formats accepted.
+
   movementDirection?: "left" | "right";
 ```
 
@@ -371,18 +381,3 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-````
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
-````
