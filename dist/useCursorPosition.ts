@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useCursorPosition = () => {
+const useCursorPosition = (): { x: number; y: number } => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const updateMousePosition = (ev: { clientX: number; clientY: number }) => {

@@ -1,5 +1,40 @@
 declare type FillMode = "none" | "forwards" | "backwards" | "both" | "auto";
 declare type IterationCompositeOperation = "replace" | "accumulate";
+export interface Rect {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  top: number;
+  right: number;
+  left: number;
+  bottom: number;
+}
+export interface BoxModelData {
+  margins: {
+    top: number;
+    right: number;
+    bottom: number;
+    left: number;
+  };
+  border: {
+    top: number;
+    right: number;
+    bottom: number;
+    left: number;
+    radius: number;
+  };
+  padding: {
+    top: number;
+    right: number;
+    bottom: number;
+    left: number;
+  };
+  contentHeight: number;
+  contentWidth: number;
+}
+declare type CubicBezierPattern =
+  `cubic-bezier(${number},${number},${number},${number})`;
 declare type EasingMode =
   | "linear"
   | "ease-in"
@@ -7,7 +42,8 @@ declare type EasingMode =
   | "ease-in-out"
   | "linear"
   | "step-start"
-  | "step-end";
+  | "step-end"
+  | CubicBezierPattern;
 declare type PlaybackDirection =
   | "normal"
   | "reverse"
@@ -62,6 +98,7 @@ export interface IPerspective extends IBaseAnimation {
   perspectiveAxisYTiltUnit?: `deg` | `turn` | `rad`;
   perspectiveAxisZTiltUnit?: `deg` | `turn` | `rad`;
   unit?: `px` | `cm` | `px` | `em` | `rem` | `pt` | `vh` | `vw` | `pc` | `in`;
+  origin?: string;
 }
 
 export interface IChainColors extends IBaseAnimation {
@@ -71,4 +108,5 @@ export interface IChainColors extends IBaseAnimation {
 export interface IAnimateGradient extends IBaseAnimation {
   spread?: 1 | 2 | 3 | 4 | 5;
   colors: string[];
+  movementDirection?: "left" | "right";
 }
