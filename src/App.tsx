@@ -10,8 +10,13 @@ function App() {
   const divToMove1: MutableRefObject<any> = React.useRef();
   const divToMove2: MutableRefObject<any> = React.useRef();
   const divToMove3: MutableRefObject<any> = React.useRef();
+  const eyeToEnlarge1: MutableRefObject<any> = React.useRef();
+  const eyeToEnlarge2: MutableRefObject<any> = React.useRef();
+  const sunToRotate: MutableRefObject<any> = React.useRef();
+  const planetToRotate: MutableRefObject<any> = React.useRef();
+  const door: MutableRefObject<any> = React.useRef();
 
-  const { perspective, move } = useAnimation();
+  const { perspective, move, resize, rotate } = useAnimation();
   const { getDimensions } = useGetDimensions();
   React.useEffect(() => {
     hooksyInfo("Rendered!");
@@ -133,47 +138,89 @@ function App() {
           <button
             className="button"
             onClick={() => {
-              const toBottom = getDimensions(divToMove3).bottom;
-              move({
-                element: divToMove1,
-                x: 0,
-                y: -150,
+              resize({
+                element: eyeToEnlarge1,
+                duration: 2300,
+                fill: "backwards",
+                easing: `ease-in-out`,
                 direction: `alternate`,
-                duration: 600,
-                easing: `cubic-bezier(.19,.55,.48,1.06)`,
-                fill: `forwards`,
-                unit: `px`,
-                iterations: 4,
+                scale: 1.5,
+                iterations: 2,
               });
-              move({
-                element: divToMove2,
-                x: 10,
-                y: -100,
+              resize({
+                element: eyeToEnlarge2,
+                duration: 3600,
+                fill: "backwards",
                 direction: `alternate`,
-                duration: 500,
-                easing: `cubic-bezier(.32,.46,.48,1.06)`,
-                fill: `forwards`,
-                unit: `px`,
-                iterations: 6,
-              });
-              move({
-                element: divToMove3,
-                x: 0,
-                y: window.innerHeight - toBottom + 10,
-                direction: `alternate`,
-                duration: 400,
-                easing: `cubic-bezier(.55,-0.43,.96,.58)`,
-                fill: `forwards`,
-                unit: `px`,
-                iterations: 6,
+                easing: `ease-in-out`,
+                scale: 1.6,
+                iterations: 2,
               });
             }}
           >
             Look at me!
           </button>
           <div className="amuseAcat">
-            <div className="amuseAcat-eyes"></div>
+            <div className="amuseAcat-eyes">
+              <div className="amuseAcat-eyes_single" ref={eyeToEnlarge1}></div>
+              <div className="amuseAcat-eyes_single" ref={eyeToEnlarge2}></div>
+            </div>
           </div>
+        </div>
+
+        <h2>rotate()</h2>
+        <div className="animationExample">
+          <button
+            className="button"
+            onClick={() => {
+              rotate({
+                turnDegree: 1,
+                unit: `turn`,
+                element: sunToRotate,
+                duration: 10000,
+                iterations: 1,
+                easing: `ease-out`,
+              });
+              rotate({
+                turnDegree: -1,
+                unit: `turn`,
+                element: planetToRotate,
+                duration: 1000,
+                iterations: 10,
+              });
+            }}
+          >
+            Rovolve! Alas!
+          </button>
+          <div className="copernicus" ref={sunToRotate}>
+            <div className="copernicus-planet" ref={planetToRotate}></div>
+          </div>
+        </div>
+
+        <h2>perspective()</h2>
+        <div className="animationExample">
+          <button
+            className="button"
+            onClick={() => {
+              perspective({
+                element: door,
+                perspective: 470,
+                origin: "left",
+                unit: "px",
+                perspectiveAxisXTilt: 0,
+                perspectiveAxisYTilt: -60,
+                perspectiveAxisZTilt: 0,
+                duration: 3500,
+                direction: `alternate`,
+                easing: `cubic-bezier(.55,-1.04,.22,2.08)`,
+                iterations: 2,
+                fill: `forwards`,
+              });
+            }}
+          >
+            Open!
+          </button>
+          <div className="door" ref={door}></div>
         </div>
       </main>
       <footer>
