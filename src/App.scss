@@ -97,7 +97,6 @@ body {
         background-position: center;
         background-size: 50%;
         background-repeat: no-repeat;
-        margin-left: 50px;
         &-planet {
           width: 80px;
           height: 80px;
@@ -109,7 +108,6 @@ body {
       }
 
       .door {
-        margin-left: 50px;
         width: 142px;
         height: 250px;
         border: 1px solid transparent;
@@ -118,6 +116,12 @@ body {
         background-size: contain;
         background-repeat: no-repeat;
         background-color: green;
+        z-index: 2;
+        &-snowman {
+          font-size: 145px;
+          margin-left: -140px;
+          transform: rotate(45deg);
+        }
       }
     }
   }
