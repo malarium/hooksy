@@ -1,4 +1,5 @@
 import React, { MutableRefObject } from "react";
+import Gist from "react-gist";
 import "./App.scss";
 import { hooksyInfo } from "./lib/helpers/consoleInfo";
 import useAnimation from "./lib/useAnimation";
@@ -163,7 +164,7 @@ function App() {
             </div>
           </div>
         </div>
-
+        <Gist id="b30c5f8de321dbdb8afedcca2c2e938e" />
         <h2
           onClick={() => {
             rotate({
@@ -172,14 +173,15 @@ function App() {
               element: sunToRotate,
               duration: 10000,
               iterations: 1,
-              easing: `ease-out`,
+              easing: `cubic-bezier(.15,.1,.39,1.05)`,
             });
             rotate({
-              turnDegree: -1,
+              turnDegree: -10,
               unit: `turn`,
               element: planetToRotate,
-              duration: 1000,
-              iterations: 10,
+              duration: 10000,
+              iterations: 1,
+              easing: `cubic-bezier(.15,.1,.39,1.05)`,
             });
           }}
         >
