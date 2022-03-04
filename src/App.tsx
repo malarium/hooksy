@@ -1,5 +1,4 @@
 import React, { MutableRefObject } from "react";
-import Gist from "react-gist";
 import "./App.scss";
 import { hooksyInfo } from "./lib/helpers/consoleInfo";
 import useAnimation from "./lib/useAnimation";
@@ -164,7 +163,6 @@ function App() {
             </div>
           </div>
         </div>
-        <Gist id="b30c5f8de321dbdb8afedcca2c2e938e" />
         <h2
           onClick={() => {
             rotate({
