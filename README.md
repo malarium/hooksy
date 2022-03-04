@@ -86,7 +86,7 @@ console.log(getDimensions(elementToCheck))
 
 ## **getBoxModel**
 
-This method also accepts a fer and provides data on element's measurements. It returns:
+This method also accepts a ref and provides data on element's measurements. It returns:
 
 ```
 {
