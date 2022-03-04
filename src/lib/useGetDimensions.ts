@@ -5,7 +5,20 @@ const useGetDimensions = () => {
   const getDimensions = (element: React.MutableRefObject<any>): Rect => {
     const { x, y, width, height, top, right, bottom, left } =
       element.current.getBoundingClientRect();
-    return { x, y, width, height, top, right, bottom, left };
+    const absoluteRight = window.innerWidth - right;
+    const absoluteBottom = window.innerHeight - bottom;
+    return {
+      x,
+      y,
+      width,
+      height,
+      top,
+      right,
+      bottom,
+      left,
+      absoluteBottom,
+      absoluteRight,
+    };
   };
   const getBoxModel = (element: React.MutableRefObject<any>): BoxModelData => {
     const style: CSSStyleDeclaration = getComputedStyle(element.current);

@@ -1,10 +1,6 @@
 import { hooksyError } from "./helpers/consoleInfo";
 
 const useSort = () => {
-  const sortAlphabetically = (arr: string[]) => {
-    return arr.sort((a, b) => a.localeCompare(b));
-  };
-
   const sortNumbers = (arr: number[]) => {
     if (arr.includes(NaN) || arr.includes(Infinity)) {
       hooksyError(
@@ -14,6 +10,9 @@ const useSort = () => {
     }
     return arr.sort((a, b) => a - b);
   };
-  return { sortAlphabetically, sortNumbers };
+  const sortAlphabetically = (arr: string[]): string[] => {
+    return arr.sort((a, b) => a.localeCompare(b));
+  };
+  return { sortNumbers, sortAlphabetically };
 };
 export default useSort;

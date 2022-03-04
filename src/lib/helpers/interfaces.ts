@@ -9,6 +9,8 @@ export interface Rect {
   right: number;
   left: number;
   bottom: number;
+  absoluteRight: number;
+  absoluteBottom: number;
 }
 export interface BoxModelData {
   margins: {

@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 
-const useCursorStaticPosition = () => {
+const useCursorStaticPosition = (): {
+  x: number;
+  y: number;
+} => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const updateMousePosition = (ev: { clientX: number; clientY: number }) => {
-    console.log(`clicked`);
     setMousePosition({ x: ev.clientX, y: ev.clientY });
   };
 
